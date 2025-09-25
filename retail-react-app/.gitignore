@@ -1,0 +1,17 @@
+# Ignore build folder
+build/
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore .env file
+.env
+
+# package lock json
+package-lock.json
+
+# translations
+overrides/app/static/translations/compiled
+
+#coverage folder
+coverage
