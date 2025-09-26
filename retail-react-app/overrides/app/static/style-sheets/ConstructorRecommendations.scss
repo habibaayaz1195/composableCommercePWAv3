@@ -1,0 +1,393 @@
+
+.recommendations-wrapper {
+
+    margin: 40px 0;
+
+    .mob-recommendations-wrapper {
+        position: relative;
+    
+        .mob-recommendations-container {
+            position: relative;
+    
+            .recommendations-items {
+                display: flex;
+                justify-content: center;
+                transition: transform 0.3s ease;
+                .recommendation-item {
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    overflow: hidden;
+                    position: relative;
+                    transition: transform 0.3s ease;
+                    background: white;
+                    text-align: center;
+    
+                    img {
+                        display: block;
+                        margin: 0 auto;
+                        width: 90%;
+                    }
+    
+                    .recommendation-details {
+                        padding: 20px;
+                        text-align: left !important;
+    
+                        .recommendation-name {
+                            font-weight: 500;
+                            font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                            font-size: 14px;
+                            line-height: 24px;
+                            letter-spacing: 0.03em;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            color: #003a63;
+                            transition: color 0.3s ease;
+    
+                            &:hover {
+                                text-decoration: underline;
+                                color: #e66208;
+                            }
+                        }
+    
+                        .recommendation-price {
+                            font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                            font-size: 13px;
+                            font-weight: 500;
+                            line-height: 18px;
+                            color: black;
+                            letter-spacing: 0.05em;
+                            margin-top: 20px;
+                        }
+    
+                        .recommendation-description {
+                            font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                            font-size: 10px;
+                            font-weight: normal;
+                            line-height: 18px;
+                            color: black;
+                            -webkit-line-clamp: 4;
+                            -webkit-box-orient: vertical;
+                            letter-spacing: 0.05em;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .mob-navigation-buttons {
+            width: 40px;
+            height: 40px;
+            border: none;
+            position: absolute;
+            top: 39%;
+            transform: translateY(-50%);
+            background: transparent;
+            cursor: pointer;
+            z-index: 1;
+            border-radius: 50%;
+            background-color: #ffffffb0;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+            color: #003a63;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            &:hover {
+                background-color: #ffffffd0;
+            }
+        
+            svg {
+                width: 20px; /* Adjust the icon size */
+                height: 20px; /* Adjust the icon size */
+                fill: currentColor; /* Use the parent's color */
+                transition: fill 0.3s ease;
+            }
+        }
+        
+        .mob-right-button {
+            right: 1%;
+        
+            svg {
+                &:hover {
+                    color: #e66208;
+                }
+            }
+        }
+        
+        .mob-left-button {
+            left: 1%;
+        
+            svg {
+                &:hover {
+                    color: #e66208;
+                }
+            }
+        }
+        
+    }
+    @media screen and (max-width: 768px) {
+        padding: 0px 30px;
+    }
+}
+
+.recommendations-title {
+    transition: color 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 9%;
+    width: calc(100% - 20px);
+    max-width: 25%;
+    height: 516px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px 0px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+
+    .inner-heading {
+        padding: 3px 0;
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 40px;
+        transition: color 0.3s ease;
+        &:hover {
+            color: #E66208;
+        }
+    }
+    .inner-text {
+        font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 18px;
+        color: black;
+        letter-spacing: 0.05em;
+        padding-left: 4px;
+    }
+
+    .inner-button {
+        background: #003a63;
+        width: 99%;
+        border-radius: 0px;
+        margin-top: 90px;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+            background: #E66208;
+        }
+    }
+
+    .blurry {
+        background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    }
+}
+
+.recommendations-title.blurry {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.313);
+}
+
+.first-item {
+    position: relative;
+}
+
+.first-item .recommendation-image {
+    z-index: 1;
+}
+
+/* Make the title white when there's no product behind it */
+.no-product-behind .recommendations-title {
+    background-color: #fff;
+}
+
+
+//pdp accordion descriptions
+.css-17mg6aq {
+    color: #003963;
+    transition: color 0.3s ease;
+    .css-1tpfj91 {
+        height: 58px;
+    }
+    &:hover {
+        color: #E66208;
+    }
+}
+.chakra-collapse {
+    .css-1vifcq3 {
+        padding-inline-start: 10px;
+    }
+}
+
+.Mobile-title-content {
+    background: white;
+    padding: 30px 18px;
+    .inner-heading {
+        padding: 3px 0;
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 40px;
+        color: #003963;
+        transition: color 0.3s ease;
+        &:hover {
+            color: #E66208;
+            
+        }
+    }
+    .inner-text {
+        font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 18px;
+        color: black;
+        letter-spacing: 0.05em;
+        padding-left: 2px;
+    }
+}
+.fixed-column {
+            // position: relative;
+            width: 100%;
+            z-index: 999;
+
+            &.blurry-background {
+                background-color: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(10px);
+            }
+
+            .recommendations-title {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+        }
+        .ROW {
+            display: flex;
+            justify-content: space-between; // Ensures there is space between the two boxes
+            gap: 20px; // Adds a gap between the boxes
+            align-items: center; // Vertically center the content
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .BOX-ONE {
+            width: 20%;
+            .recommendations-title {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                backdrop-filter: blur(10px);
+                background-color: rgba(255, 255, 255, 0.313);
+                .inner-title-content {
+                    display: flex;
+                    flex-direction: column;
+                    color: #003963;
+                    align-items: flex-start;
+                }
+            }
+            .recommendations-title.blurry {
+                backdrop-filter: blur(10px);
+                background-color: rgba(255, 255, 255, 0.313);
+            }
+        }
+        
+        .BOX-TWO {
+            width: 78%;
+            overflow: visible;
+            
+        
+            .recommendations-container-inner {
+                position: relative;
+                overflow: visible;
+        
+                .recommendations-items {
+                    display: flex;
+                    transition: transform 0.5s ease;
+                    gap: 8px;
+                    .recommendation-item {
+                        flex: 0 0 auto;
+                        width: 25%;
+                        min-width: 25%;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                        position: relative;
+                        border-radius: 0;
+                        transition: transform 0.3s ease;
+                        background: white;
+            
+                        .recommendation-image {
+                            width: 100%;
+                            height: 320px;
+                        }
+            
+                        .recommendation-details {
+                            padding: 20px 15px;
+            
+                            .recommendation-name {
+                                font-weight: 500;
+                                font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                                font-size: 14px;
+                                line-height: 24px;
+                                color: #003963;
+                                text-transform: uppercase;
+                                letter-spacing: 0.03em;
+                                white-space: nowrap; /* Prevent wrapping */
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                transition: color 0.3s ease;
+                                &:hover {
+                                    text-decoration: underline;
+                                    color: #E66208;
+                                }
+                            }
+            
+                            .recommendation-price {
+                                font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                                font-size: 13px;
+                                font-weight: 500;
+                                line-height: 18px;
+                                color: #003963;
+                                letter-spacing: 0.05em;
+                                margin-top: 20px;
+                            }
+            
+                            .recommendation-description {
+                                font-family: "Neue Haas Grotesk Txt W05_55 R",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,Oxygen,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans",sans-serif,"Times New Roman","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                                font-size: 10px;
+                                font-weight: normal;
+                                line-height: 18px;
+                                color: black;
+                                -webkit-line-clamp: 4;
+                                -webkit-box-orient: vertical;
+                                letter-spacing: 0.05em;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                    }
+                }
+        
+                .carousel-button {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: rgba(255, 255, 255, 0.7);
+                    border: none;
+                    cursor: pointer;
+                    z-index: 1;
+                    padding: 10px;
+                    border-radius: 50%;
+        
+                    &.left-button {
+                        left: 10px;
+                    }
+        
+                    &.right-button {
+                        right: 10px;
+                    }
+                }
+            }
+        }
+        

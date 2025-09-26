@@ -1,0 +1,1349 @@
+:root {
+    --chakra-colors-blue-300: #e08341 !important;
+    --chakra-colors-blue-700: #E66208 !important; // New blue color
+    --chakra-colors-blue-600: #003a63 !important;
+    --chakra-colors-blue-800: #062a43 !important;
+    --chakra-transition-duration-fast: 300ms !important;
+    --chakra-colors-red-600: #da6a24;
+    --chakra-radii-sm: 0 !important;
+    --chakra-radii-base: 0 !important;
+}
+
+#app-main.blur-body {
+    background-color: #aa9d97c7; // Adjust opacity as needed
+    filter: blur(1px); // Adjust blur intensity as needed
+}
+
+#app-main {
+    background-color: #f2f2f263;
+}
+
+.blur-body {
+    background-color: #aa9d97c7; // Adjust opacity as needed
+    filter: blur(1px); // Adjust blur intensity as needed
+}
+
+.search-wrap-container {
+
+    color: black;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+
+    @media screen and (min-width: 48em) {
+        flex-direction: row-reverse;
+        margin: 0 auto;
+        padding: 0 50px;
+    }
+
+    .search-wrap {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(30px);
+        padding: 42px 60px 60px 60px;
+        flex-direction: row-reverse;
+        box-shadow: 0px 16px 9px 0px rgba(84, 76, 61, 0.45);
+        -webkit-box-shadow: 0px 16px 9px 0px rgba(84, 76, 61, 0.45);
+        -moz-box-shadow: 0px 16px 9px 0px rgba(84, 76, 61, 0.45);
+
+        @media screen and (max-width: 768px) {
+            padding: 28px 20px 0px 20px;
+            flex-direction: column;
+        }
+    }
+
+    .search-suggestions {
+        width: 100%;
+
+        .cio-section {
+            margin: 0 25px;
+            display: grid;
+
+            .cio-sectionName {
+                margin-bottom: 10px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 18px;
+                text-transform: uppercase;
+                color: #003a63 !important;
+                transition: color 0.3s ease !important;
+
+                &:hover {
+                    color: #E66208 !important;
+                    text-decoration: none;
+                }
+            }
+
+            .chakra-link {
+                padding-bottom: 2px;
+                width: 100%;
+                font-size: 12px;
+
+                .italics {
+                    font-style: italic;
+                    text-transform: capitalize;
+                    font-weight: 600;
+                    color: #003a63 !important;
+                    transition: color 0.3s ease !important;
+
+                    &:hover {
+                        color: #E66208 !important;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                margin: 0;
+            }
+        }
+
+        @media screen and (min-width: 48em) {
+            width: 25%;
+        }
+    }
+
+    .products {
+        width: 100%;
+
+        .cio-section {
+
+            .cio-sectionName {
+                &.title {
+                    margin-bottom: 15px;
+                    padding: 15px 0;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 18px;
+                    text-transform: uppercase;
+                    color: #003a63 !important;
+                    transition: color 0.3s ease !important;
+
+                    &:hover {
+                        color: #E66208 !important;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .cio-items {
+                &.suggestion-images-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    gap: 10px;
+
+                    .cio-item {
+                        padding-bottom: 8px;
+                        width: 100%;
+                        border: 1px solid lightgray;
+                        background: white;
+
+                        @media screen and (min-width: 768px) {
+                            width: calc(100% / 5 - 12px); // Display 5 products on desktop
+                            // Subtracting margin from width to fit exactly 5 products
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            width: calc(50% - 10px); // Display 2 products in one row on mobile
+                            // Subtracting gap from width to fit exactly 2 products
+                        }
+
+                        @media screen and (max-width: 320px) {
+                            width: calc(43% - 10px); // Display 2 products in one row on mobile
+                            // Subtracting gap from width to fit exactly 2 products
+                        }
+                    }
+
+                    .cio-item-heading-parent {
+                        padding: 18px 7px;
+
+                        .cio-item-heading {
+                            font-weight: 600;
+                            font-size: 12px;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            max-height: calc(1.5 * 1.2 * 2);
+                            /* 1.5 * line-height * number of lines */
+                            color: #003a63 !important;
+                            transition: color 0.3s ease !important;
+
+                            &:hover {
+                                color: #E66208 !important;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        @media screen and (min-width: 48em) {
+            width: 78%;
+        }
+    }
+
+    .close-button {
+        background-color: transparent;
+        color: #132337;
+        border: none;
+        outline: none;
+        padding: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 46px;
+        z-index: 99;
+        right: 99px;
+
+        &:hover {
+            color: #da6a24;
+            background-color: transparent;
+        }
+
+        svg {
+            height: 14px;
+        }
+
+        @media screen and (max-width: 768px) {
+            top: 30px;
+            right: 36px;
+
+            svg {
+                height: 12px;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            top: 30px;
+            right: 36px;
+
+            svg {
+                height: 12px;
+            }
+        }
+    }
+}
+
+
+.visible {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+.search-input {
+    position: relative;
+
+    .css-cvuq2k {
+        border: none;
+        border-bottom: 1.5px solid #003963;
+        border-radius: 0;
+        padding: 0;
+        font-size: 14px;
+        height: 40px;
+        width: 100%;
+        transition: border-bottom 0.3s ease;
+        transition: right 0.3s ease, width 0.3s ease;
+
+        &::placeholder {
+            font-size: 14px;
+            /* Adjust the font size as desired */
+        }
+    }
+
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        height: 18px;
+        transform: translateY(-50%);
+        right: 1px;
+        color: #272727;
+    }
+
+    &:focus-within .css-cvuq2k {
+        border: none;
+        box-shadow: none;
+        border-bottom: 2px solid #003963;
+        ;
+    }
+}
+
+.css-1rr4qq7 {
+    display: flex;
+
+    #list-menu {
+        .chakra-stack {
+            .css-70qvj9 {
+                padding-right: 4px;
+            }
+
+            .chakra-popover__popper {
+                .chakra-popover__content {
+                    .chakra-popover__body {
+                        .chakra-stack {
+                            gap: 0;
+
+                            .css-1kduhje {
+                                grid-template-columns: repeat(3, minmax(0, 16%));
+
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .css-15rdum4 {
+            padding-left: 30px;
+
+            .chakra-link {
+                font-size: 12px;
+                padding: 10px 4px;
+                font-family: "Neue Haas Grotesk Txt W05_55 R", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, Oxygen, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", sans-serif, "Times New Roman", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                font-size: 12.5px;
+                font-weight: 600;
+                line-height: 18px;
+                // color: #003963;
+                letter-spacing: 0.01em;
+                margin: 0;
+                transition-property: none;
+                border: none;
+                padding-right: 6px;
+
+                &:focus-within .css-cvuq2k {
+                    border: none;
+                    border-bottom: none;
+                    text-decoration: none;
+                    box-shadow: none;
+                }
+
+                .chakra-fade {
+                    .css-0 {
+                        .chakra-icon {
+                            margin-left: -10px;
+                            color: #E66208;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.css-105gj4s {
+    line-height: 0;
+}
+
+.css-nsax4i {
+    background-image: url('../img/RC-logo.jpg') !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+
+    use {
+        opacity: 0; // Hide the PWA-Kit's logo
+        display: none;
+    }
+}
+
+.hWrapper {
+    .css-spn4bz {
+        .css-17ux994 {
+            background-image: url('../img/RC-logo.jpg') !important;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100px;
+
+            use {
+                opacity: 0; // Hide the PWA-Kit's logo
+                display: none;
+            }
+        }
+    }
+
+    .css-1x1e3ma {
+        .chakra-button {
+            .css-1x8eu64 {
+                width: 20px;
+            }
+        }
+
+        .pwa-kit-logo {
+            opacity: 0; // Hide the PWA-Kit's logo
+        }
+
+        .css-1lo24j9 {
+            .css-12fb2o {
+                background-image: url('../img/RC-logo.jpg') !important;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 100px;
+
+                use {
+                    opacity: 0; // Hide the PWA-Kit's logo
+                    display: none;
+                }
+            }
+
+        }
+    }
+}
+
+.css-1lo24j9 {
+    .css-12fb2o {
+        background-image: url('../img/RC-logo.jpg') !important;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100px;
+
+        use {
+            opacity: 0; // Hide the PWA-Kit's logo
+            display: none;
+        }
+    }
+
+}
+
+.did-you-mean-section {
+    .chakra-link {
+        .chakra-link {
+            padding-bottom: 2px;
+            width: 100%;
+            font-size: 12px;
+        }
+    }
+
+    .sectionName {
+        margin-bottom: 0px;
+        padding-top: 15px;
+        padding-bottom: 0px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 18px;
+        text-transform: uppercase;
+        color: #003a63 !important;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+            text-decoration: none;
+        }
+    }
+}
+
+.did-you-mean-empty {
+    width: 100%;
+    padding: 54px 64px 66px 64px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 16px 9px 0px rgba(84, 76, 61, 0.45);
+    -webkit-box-shadow: 0px 16px 9px 0px rgba(84, 76, 61, 0.45);
+    -moz-box-shadow: 0px 16px 9px 0px rgba(84, 76, 61, 0.45);
+
+
+    .powered-by-search-text {
+        bottom: 10px;
+        right: 61px;
+
+        @media screen and (max-width: 768px) {
+            right: 6%;
+            margin: 20px 0px;
+        }
+    }
+
+    .chakra-link {
+        margin: 50px 0;
+        text-decoration: underline;
+    }
+
+    .heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+
+        font-size: 18px;
+        font-weight: 500;
+        color: #003a63 !important;
+        text-transform: uppercase;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+            text-decoration: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.0rem;
+        }
+    }
+
+    .text {
+        font-size: 13px;
+
+        @media screen and (max-width: 768px) {
+            font-size: 12px;
+        }
+    }
+
+    .close-button {
+        top: 46px;
+        right: 49px;
+
+        @media screen and (max-width: 768px) {
+            top: 30px;
+            right: 36px;
+
+            svg {
+                height: 12px;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            top: 30px;
+            right: 36px;
+
+            svg {
+                height: 12px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 80px 50px 80px 50px;
+
+        .close-button {
+            top: 46px;
+            right: 49px;
+
+            @media screen and (max-width: 768px) {
+                top: 30px;
+                right: 36px;
+
+                svg {
+                    height: 12px;
+                }
+            }
+
+            @media screen and (max-width: 320px) {
+                top: 30px;
+                right: 36px;
+
+                svg {
+                    height: 12px;
+                }
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 40px 25px 80px 25px;
+            height: auto;
+        }
+
+        @media screen and (max-width: 320px) {
+            padding: 35px 20px 35px 20px;
+        }
+    }
+
+}
+
+//pdp changes
+.sf-product-detail-page {
+    #product-view {
+        .css-2eg782 {
+            .chakra-stack {
+                .css-6st093 {
+                    .chakra-skeleton {
+                        .sf-breadcrumb {
+                            font-size: 12.5px;
+
+                            .chakra-breadcrumb__list {
+                                .chakra-breadcrumb__list-item {
+                                    .css-1gj11lm {
+                                        padding-top: 0;
+                                        padding-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.css-fl9sk3 {
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #E66208;
+    }
+}
+
+.chakra-breadcrumb__list-item {
+    .css-1gj11lm {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+//heading
+.css-1xix1js {
+    text-transform: uppercase;
+    font-size: 22px;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #E66208;
+    }
+}
+
+//add to cart button on pdp
+.css-1wup60v {
+    background: #003a63 !important;
+    width: 100%;
+    border-radius: 0px !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease !important;
+
+    &:hover {
+        background: #E66208 !important;
+    }
+}
+
+// add set to wishlist button on pdp 
+.css-1mfmpuh {
+    background: #ffffff !important;
+    width: 100%;
+    color: #003a63 !important;
+    outline: none;
+    border-radius: 0px !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s ease !important;
+
+    &:hover {
+        color: #E66208 !important;
+    }
+}
+
+//color size and quanitity headings in pdp 
+.css-1wc4m3w {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.css-2ygcmq {
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+}
+
+//pdp size swatches
+.css-2imjyh {
+    .css-nm7dku {
+        border-radius: 0px;
+
+        &:hover {
+            color: #E66208 !important;
+            border-color: #E66208 !important;
+        }
+    }
+}
+
+//swatch when clicked
+.css-j9wu9g {
+    border-radius: 0px !important;
+    background-color: #E66208 !important;
+    border-color: #E66208 !important;
+}
+
+//pdp quantity 
+.css-722v25 {
+    font-size: 14px;
+}
+
+.css-1c5xe7r {
+    line-height: 15px;
+}
+
+.css-1igwmid {
+    transition: color 0.3s ease !important;
+
+    button {
+        color: #003a63;
+        border-radius: 0px;
+    }
+
+    input {
+        border-radius: 0px;
+
+        &:hover {
+            color: #E66208 !important;
+            border-color: #E66208 !important;
+        }
+    }
+}
+
+
+//homepage product scroller
+.css-1palvqh {
+    .css-1taus7x {
+        font-family: "Neue Haas Grotesk Txt W05_55 R", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, Oxygen, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", sans-serif, "Times New Roman", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+        .css-1n9sdnd {
+            font-size: 14px;
+            color: #003a63;
+
+            .css-1tj0oz6 {
+                &:hover {
+                    color: #E66208 !important;
+                }
+
+                &::after {
+                    background: #003a63;
+                }
+            }
+        }
+
+        .css-moasjy {
+            font-size: 36px;
+        }
+    }
+
+    .css-19s2ehc {
+        overflow-x: hidden;
+    }
+
+    .css-1mvwrjw {
+        background: white;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .css-18gplrp,
+    .css-1ii3o5k {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+    }
+
+    .css-nvp0ya {
+        color: #003a63;
+
+        &:hover {
+            color: #E66208 !important;
+        }
+    }
+
+    //product tile
+    .css-msbdq {
+        padding-bottom: 18px;
+
+        .css-35ezg3 {
+            padding-left: 20px;
+            color: #003a63;
+            font-weight: bolder;
+        }
+
+        p {
+            padding-left: 20px;
+        }
+    }
+}
+
+
+//ADD TO CART modal 
+.css-1y0r9k4 {
+    font-family: "Neue Haas Grotesk Txt W05_55 R", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, Oxygen, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", sans-serif, "Times New Roman", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    border-radius: 0px;
+
+    .chakra-modal__header {
+        font-size: 20px;
+    }
+
+    .css-pu3tg8 {
+        background-color: #003a63;
+        border-radius: 0px;
+
+        &:hover {
+            background-color: #E66208 !important;
+        }
+    }
+
+    .css-1suv314 {
+        color: #E66208;
+        border-radius: 0px;
+
+        &:hover {
+            color: #003963 !important;
+        }
+    }
+
+    .css-16dyiba {
+        background-color: transparent;
+    }
+}
+
+//cart number icon
+.css-1f8t10 {
+    background-color: #E66208 !important;
+
+    &:hover {
+        background-color: #003963 !important;
+    }
+}
+
+//footer
+.css-2y4ru5 {
+    background-color: #132337 !important;
+
+    .css-1y0e7gb {}
+
+    .css-1lnmyja {
+        .chakra-icon {
+            &:hover {
+                color: #E66208 !important;
+            }
+        }
+    }
+
+    .css-1k96xaf {
+        border-radius: 0;
+    }
+}
+
+//cart page
+.css-bixqov {
+    color: #003a63 !important;
+    transition: color 0.3s ease !important;
+
+    &:hover {
+        color: #E66208 !important;
+        text-decoration: none;
+    }
+}
+
+// Override border color on focus for css-cvuq2k and css-b6x3pf classes
+.css-cvuq2k:focus-visible,
+.css-cvuq2k[data-focus-visible],
+.css-b6x3pf:focus-visible,
+.css-b6x3pf[data-focus-visible],
+.css-10bkqb7:focus-visible,
+.css-10bkqb7[data-focus-visible] {
+    border-color: #E66208 !important; // New focus border color
+    box-shadow: 0 0 0 1px #df895096 !important; // Optional: Add box shadow for focus
+}
+
+.css-cvuq2k:focus-visible,
+.css-cvuq2k[data-focus-visible] {
+    border-color: #132337 !important; // New focus border color
+    box-shadow: 0 0 0 1px #003a63 !important; // Optional: Add box shadow for focus
+}
+
+//PLP filter dropdown 
+.css-1tt3l8w:focus-visible,
+.css-1tt3l8w[data-focus-visible] {
+    border-color: #e66108f3 !important; // New focus border color
+    box-shadow: 0 0 0 1px #df895000 !important; // Optional: Add box shadow for focus
+}
+
+.css-1tt3l8w {
+    border-color: #003a63;
+}
+
+.search-input {
+    .css-cvuq2k:focus-visible {
+        border: none;
+        border-bottom: 1.5px solid #062a43;
+        box-shadow: 0 0 0 1px #ffffff00 !important;
+    }
+}
+
+//PLP 
+.css-14uo691 {
+    .css-17kppzm {
+        &:hover {
+            color: #E66208 !important;
+            border-color: #E66208 !important;
+        }
+    }
+}
+
+//PLP swatch when clicked
+.css-1fmrvia {
+    border-radius: 0px !important;
+    background-color: #E66208 !important;
+    border-color: #E66208 !important;
+}
+
+//OFLINE PAGE 
+.c-offline-boundary {
+    text-align: center;
+    padding: 30px;
+
+    svg,
+    button {
+        margin: 30px;
+    }
+}
+
+//PLP style accordion
+.css-j7qwjs {}
+
+// mine stuff
+#list-menu {
+    .chakra-link {
+        .chakra-fade {
+            color: #E66208;
+        }
+    }
+}
+
+// Page designer changes
+.css-1f2qfwr {
+    -webkit-filter: none;
+    filter: none !important;
+}
+
+.css-chwe1w {
+    padding: 0 !important;
+}
+.css-naeeoo {
+    h3 {
+        font-size: 14px;
+        color: #003a63;
+        text-transform: uppercase;
+    }
+}
+.css-1wvr6mf {
+    .css-naeeoo {
+        margin: 15% 5% 0 5%;
+        color: #003a63;
+        text-transform: uppercase;
+        .component {
+            height: 350px !important;
+            overflow: hidden !important;
+
+            .container {
+                .css-0 {
+                    width: 100%;
+
+                    h3 {
+                        font-size: 14px;
+                    }
+                }
+
+                h3 {
+                    font-size: 14px;
+                    color: #003a63;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        
+    }
+}
+
+.css-1v3gkkx p {
+    color: white !important;
+}
+
+.css-uoc7rm {
+    overflow: hidden !important;
+}
+
+.css-1e07ogd {
+    font-size: 26px !important;
+}
+
+.css-18witt8 {
+    padding: 20px;
+
+    .css-ahthbn {
+        height: 100% !important;
+    }
+}
+
+.css-92vmo6 {
+    font-size: 14px !important;
+    color: #003a63 !important;
+    transition: color 0.3s ease !important;
+
+    .css-1vujc0v {
+
+        &:hover {
+            color: #E66208 !important;
+
+        }
+    }
+}
+
+.css-16sd5x6 {
+    .css-1f2qfwr {
+        height: 399px;
+    }
+}
+
+// .chakra-link{
+
+// }
+.css-1nb31e6 {
+    .css-1rr4qq7 {
+        display: block !important;
+    }
+}
+
+.css-7boy05 {
+    .css-140tdgz {
+        .css-9r4nlb {
+            margin: 0;
+        }
+    }
+}
+
+.css-7boy05 {
+    .css-140tdgz {
+        .css-6b42ym {
+            margin: 0;
+        }
+    }
+}
+
+.css-1nb31e6 {
+    .css-1tsdjac {
+        .css-1mv3tuz {
+
+            img {
+                height: 30px !important;
+            }
+        }
+    }
+}
+
+.main-banner-class {
+    img {
+        @media screen and (max-width: 768px) {
+            height: 340px;
+        }
+    }
+}
+
+//contentful
+.css-5cgts1 {
+    @media screen and (max-width: 768px) {
+        margin-right: 0 !important;
+    }
+}
+
+.css-1jvmshc {
+
+    @media screen and (min-width: 768px) {
+        padding: 0 23px;
+    }
+
+    .css-kobtxi {
+        text-transform: uppercase;
+        color: #003963;
+        border-radius: 0px;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+        }
+    }
+
+    .css-1k2vqoh {
+        padding: 0px 10px;
+
+        @media screen and (max-width: 768px) {
+            padding: 0 !important;
+            flex-wrap: wrap !important;
+        }
+
+        .css-1jim1b3 {
+            .css-j5yynr {
+                color: #003963;
+                font-weight: 600;
+                border-radius: 0px;
+                transition: color 0.3s ease !important;
+
+                &:hover {
+                    color: #E66208 !important;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                flex: 1 0 50% !important;
+                max-width: 50% !important;
+            }
+        }
+    }
+}
+
+
+//contentfule carousel
+.css-cx7b08 {
+    .css-16e4mij {
+        @media screen and (max-width: 768px) {
+            height: 55vw !important;
+        }
+    }
+
+    //right left buttons
+    .css-1cr3wmx {
+        color: #003963;
+        border-radius: 0px;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 26px !important;
+            min-width: 26px !important;
+        }
+
+        svg {
+            @media screen and (max-width: 768px) {
+                width: 20px;
+                height: 25px;
+            }
+        }
+    }
+
+    //left icon carousel
+    .css-1rwmpvd {
+        color: #003963;
+        border-radius: 0px;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 26px !important;
+            min-width: 26px !important;
+        }
+
+        svg {
+            @media screen and (max-width: 768px) {
+                width: 20px;
+                height: 25px;
+            }
+        }
+    }
+}
+
+//contentful featured products
+.css-1b6n4o1 {
+
+    @media screen and (min-width: 768px) {
+        padding: 0 23px;
+    }
+
+    .css-1feiw9s {
+        padding-top: 0 !important;
+        margin-bottom: 0;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        color: #003963;
+        border-radius: 0px;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+        }
+    }
+
+    .css-1qc5vmj {
+        @media screen and (max-width: 768px) {
+            display: flex !important;
+            flex-wrap: wrap !important;
+        }
+
+        a {
+            @media screen and (max-width: 768px) {
+                flex: 1 0 50% !important;
+                max-width: 47% !important;
+            }
+        }
+    }
+}
+
+//page designer
+.css-chwe1w {
+    .container {
+        .component {
+            .image-tile-figure {
+                .image-tile-image {
+                    @media screen and (max-width: 768px) {
+                        height: 55vw !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.css-1e07ogd {
+    text-transform: uppercase;
+    color: #003963;
+    border-radius: 0px;
+    transition: color 0.3s ease !important;
+
+    &:hover {
+        color: #E66208 !important;
+    }
+}
+
+//AMPLIENCE below
+
+//womens fashion
+.css-12gp2zn {
+    text-transform: uppercase;
+    color: #003963;
+    border-radius: 0px;
+    transition: color 0.3s ease !important;
+
+    &:hover {
+        color: #E66208 !important;
+    }
+
+}
+
+//chakra button
+.css-icvtu1 {
+    color: #003963;
+    border-radius: 0px;
+    transition: color 0.3s ease !important;
+
+    &:hover {
+        color: #E66208 !important;
+    }
+}
+
+.css-klk5tt {
+    .css-1aovm2e {
+        color: #003963;
+        border-radius: 0px;
+        transition: color 0.3s ease !important;
+
+        &:hover {
+            color: #E66208 !important;
+        }
+    }
+}
+
+//responsive men and women category
+.css-1jor5db {
+    .css-7boy05 {
+        @media screen and (max-width: 768px) {
+            padding: 0 30px;
+        }
+    }
+}
+
+.dym-recommendations-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-top: 26px;
+
+
+    .recommendations-items {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+
+        .recommendation-item {
+            padding-bottom: 8px;
+            width: 100%;
+            border: 1px solid lightgray;
+            background: white;
+
+            .recommendation-details {
+                padding: 12px 10px 6px 10px;
+
+                .recommendation-name {
+                    font-weight: 600;
+                    font-size: 12px;
+                    color: #003a63 !important;
+                    transition: color 0.3s ease !important;
+
+                    &:hover {
+                        color: #E66208 !important;
+                        text-decoration: none;
+                    }
+                }
+
+                .recommendation-price {
+                    font-size: 10px;
+                }
+            }
+
+            @media screen and (max-width: 786px) {
+                flex: 1 0 50%;
+                max-width: 47%;
+            }
+        }
+
+        @media screen and (max-width: 786px) {
+            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(32%, 1fr));
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    }
+
+    .did-you-mean-empty-content {
+        margin-bottom: 15px;
+        padding: 15px 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+.powered-by-search-text {
+    position: absolute;
+    bottom: 10px;
+    right: 110px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    color: rgb(128, 128, 128) 0.5;
+    font-style: italic;
+    font-size: 12px;
+    color: rgb(41, 41, 41);
+
+    span {
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    @media screen and (max-width: 768px) {
+        right: 6%;
+        margin: 20px 0px;
+    }
+}
