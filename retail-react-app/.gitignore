@@ -4,3 +4,7 @@ build/
 build
 package-lock.json
 loadable-stats.json
+# static-content
+/overrides/app/static/*
+overrides/app/static/translations/compiled
+env

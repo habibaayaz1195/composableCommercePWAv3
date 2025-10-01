@@ -5,6 +5,7 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
+require('dotenv').config()
 const sites = require('./sites.js')
 module.exports = {
     app: {
@@ -28,11 +29,11 @@ module.exports = {
         // Commerce api config
         commerceAPI: {
             proxyPath: '/mobify/proxy/api',
-            parameters: {
-                clientId: '78a1847b-0d36-4e48-8005-f2d981d1b318',
-                organizationId: 'f_ecom_zzkc_009',
-                shortCode: 'kv7kzm78',
-                siteId: 'RefArch'
+           parameters: {
+                clientId: process.env.PWA_CLIENT_ID,
+                organizationId: process.env.ORGANIZATION_ID,
+                shortCode: process.env.SHORTCODE,
+                siteId: process.env.DEFAULT_SITE
             }
         },
         // Einstein api config
