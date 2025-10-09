@@ -105,7 +105,7 @@ const {handler} = runtime.createHandler(options, (app) => {
                 currency: req.body.order.currency,
                 automatic_payment_methods: { enabled: true },
                 payment_method: req.body.paymentMethodId, 
-                return_url: `${getAppOrigin()}/checkout/confirmation/${req.body.order.orderNo}`,
+                return_url: `${req.get('origin')}/checkout/confirmation/${req.body.order.orderNo}`,
                 use_stripe_sdk: true,
                 metadata: {
                     orderNo: req.body.order.orderNo,

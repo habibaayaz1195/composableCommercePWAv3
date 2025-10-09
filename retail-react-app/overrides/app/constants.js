@@ -22,8 +22,12 @@ import {
 DEFAULT_LIMIT_VALUES[0] = 3
 DEFAULT_SEARCH_PARAMS.limit = 3
 
+export const CAT_MENU_DEFAULT_ROOT_CATEGORY = 'root'
+
 export const CUSTOM_HOME_TITLE = '🎉 Hello Extensible React Template!'
 
 export {DEFAULT_LIMIT_VALUES, DEFAULT_SEARCH_PARAMS}
 
 export * from '@salesforce/retail-react-app/app/constants'
+
+

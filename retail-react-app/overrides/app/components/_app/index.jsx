@@ -14,6 +14,9 @@ import useActiveData from '@salesforce/retail-react-app/app/hooks/use-active-dat
 import {getAppOrigin} from '@salesforce/pwa-kit-react-sdk/utils/url'
 import {getConfig} from '@salesforce/pwa-kit-runtime/utils/ssr-config'
 import {useQuery, useQueries} from '@tanstack/react-query'
+import {StoreLocatorProvider} from '../store-locator/context'
+// import {StoreLocatorProvider} from '@salesforce/retail-react-app/app/components/store-locator/context'
+
 import {
     useAccessToken,
     useCategory,
@@ -41,8 +44,9 @@ import ScrollToTop from '@salesforce/retail-react-app/app/components/scroll-to-t
 import Footer from '@salesforce/retail-react-app/app/components/footer'
 import CheckoutHeader from '@salesforce/retail-react-app/app/pages/checkout/partials/checkout-header'
 import CheckoutFooter from '@salesforce/retail-react-app/app/pages/checkout/partials/checkout-footer'
-import {DrawerMenu} from '@salesforce/retail-react-app/app/components/drawer-menu'
-import {ListMenu} from '@salesforce/retail-react-app/app/components/list-menu'
+import {DrawerMenu} from '../drawer-menu'
+import {ListMenu} from '../list-menu'
+
 import {HideOnDesktop, HideOnMobile} from '@salesforce/retail-react-app/app/components/responsive'
 import AboveHeader from '@salesforce/retail-react-app/app/components/_app/partials/above-header'
 
@@ -275,6 +279,7 @@ const App = (props) => {
     }, [location])
 
     return (
+        <StoreLocatorProvider>
         <Box className="sf-app" {...styles.container}>
             <StorefrontPreview getToken={getTokenWhenReady}>
                 <Helmet>
@@ -343,42 +348,41 @@ const App = (props) => {
 
                         <Box id="app" display="flex" flexDirection="column" flex={1}>
                             <SkipNavLink zIndex="skipLink">Skip to Content</SkipNavLink>
+                                <Box {...styles.headerWrapper}>
+                                    {!isCheckout ? (
+                                        <>
+                                            <AboveHeader />
+                                            <Header
+                                                onMenuClick={onOpen}
+                                                onLogoClick={onLogoClick}
+                                                onMyCartClick={onCartClick}
+                                                onMyAccountClick={onAccountClick}
+                                                onWishlistClick={onWishlistClick}
+                                            >
+                                                <HideOnDesktop>
+                                                    <DrawerMenu
+                                                        isOpen={isOpen}
+                                                        onClose={onClose}
+                                                        onLogoClick={onLogoClick}
+                                                        root={
+                                                            categories?.[CAT_MENU_DEFAULT_ROOT_CATEGORY]
+                                                        }
+                                                    />
+                                                </HideOnDesktop>
 
-                            <Box {...styles.headerWrapper}>
-                                {!isCheckout ? (
-                                    <>
-                                        <AboveHeader />
-                                        <Header
-                                            onMenuClick={onOpen}
-                                            onLogoClick={onLogoClick}
-                                            onMyCartClick={onCartClick}
-                                            onMyAccountClick={onAccountClick}
-                                            onWishlistClick={onWishlistClick}
-                                        >
-                                            <HideOnDesktop>
-                                                <DrawerMenu
-                                                    isOpen={isOpen}
-                                                    onClose={onClose}
-                                                    onLogoClick={onLogoClick}
-                                                    root={
-                                                        categories?.[CAT_MENU_DEFAULT_ROOT_CATEGORY]
-                                                    }
-                                                />
-                                            </HideOnDesktop>
-
-                                            <HideOnMobile>
-                                                <ListMenu
-                                                    root={
-                                                        categories?.[CAT_MENU_DEFAULT_ROOT_CATEGORY]
-                                                    }
-                                                />
-                                            </HideOnMobile>
-                                        </Header>
-                                    </>
-                                ) : (
-                                    <CheckoutHeader />
-                                )}
-                            </Box>
+                                                <HideOnMobile>
+                                                    <ListMenu
+                                                        root={
+                                                            categories?.[CAT_MENU_DEFAULT_ROOT_CATEGORY]
+                                                        }
+                                                    />
+                                                </HideOnMobile>
+                                            </Header>
+                                        </>
+                                    ) : (
+                                        <CheckoutHeader />
+                                    )}
+                                </Box>
                             {!isOnline && <OfflineBanner />}
                             <AddToCartModalProvider>
                                 <SkipNavContent
@@ -429,6 +433,7 @@ const App = (props) => {
                 )}
             </StorefrontPreview>
         </Box>
+        </StoreLocatorProvider>
     )
 }
 
