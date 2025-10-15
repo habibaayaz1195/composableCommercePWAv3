@@ -32,10 +32,10 @@ module.exports = {
         commerceAPI: {
             proxyPath: '/mobify/proxy/api',
             parameters: {
-                clientId: getEnv('REACT_APP_PWA_CLIENT_ID'),
-                organizationId: getEnv('REACT_APP_ORGANIZATION_ID'),
-                shortCode: getEnv('REACT_APP_SHORTCODE'),
-                siteId: getEnv('REACT_APP_DEFAULT_SITE')
+                clientId: getEnv('PWA_CLIENT_ID'),
+                organizationId: getEnv('ORGANIZATION_ID'),
+                shortCode: getEnv('SHORTCODE'),
+                siteId: getEnv('DEFAULT_SITE')
             }
         },
 

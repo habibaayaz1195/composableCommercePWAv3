@@ -1,108 +1,119 @@
 {
-    "name": "rc",
-    "version": "0.0.1",
-    "license": "See license in LICENSE",
-    "engines": {
-        "node": "^18.0.0 || ^20.0.0",
-        "npm": "^9.0.0 || ^10.0.0"
+  "name": "rc",
+  "version": "0.0.1",
+  "license": "See license in LICENSE",
+  "engines": {
+    "node": "^18.0.0 || ^20.0.0",
+    "npm": "^9.0.0 || ^10.0.0"
+  },
+  "ccExtensibility": {
+    "extends": "@salesforce/retail-react-app",
+    "overridesDir": "overrides"
+  },
+  "devDependencies": {
+    "@salesforce/retail-react-app": "8.0.0",
+    "@salesforce/pwa-kit-dev": "3.12.0",
+    "@salesforce/pwa-kit-runtime": "3.12.0",
+    "@salesforce/pwa-kit-react-sdk": "3.12.0",
+    "@salesforce/commerce-sdk-react": "4.0.0",
+    "@testing-library/jest-dom": "^6.6.2",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
+    "del": "^8.0.1",
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-dart-sass": "^1.1.0",
+    "gulp-rename": "^2.1.0",
+    "mini-css-extract-plugin": "^2.9.4",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^8.2.0",
+    "postcss-preset-env": "^10.4.0",
+    "process": "^0.11.10",
+    "sass": "^1.93.2",
+    "sass-loader": "^16.0.5"
+  },
+  "scripts": {
+    "lint": "pwa-kit-dev lint \"**/*.{js,jsx}\"",
+    "push": "npm run build && pwa-kit-dev push",
+    "test": "pwa-kit-dev test",
+    "compile:scss": "gulp compile-scss",
+    "watch:scss": "gulp watch-scss",
+    "minify:css": "gulp minify-css",
+    "minify:js": "gulp minify-js",
+    "build": "npm run compile:scss && npm run build-translations && npm run generate-sitemap && pwa-kit-dev build",
+    "start": "npm run compile:scss && cross-env NODE_ICU_DATA=node_modules/full-icu pwa-kit-dev start",
+    "format": "pwa-kit-dev format \"**/*.{js,jsx}\"",
+    "lint:fix": "npm run lint -- --fix",
+    "tail-logs": "pwa-kit-dev tail-logs",
+    "postinstall": "npm run compile-translations && npm run compile-translations:pseudo",
+    "analyze-build": "cross-env MOBIFY_ANALYZE=true npm run build",
+    "start:inspect": "npm run start -- --inspect",
+    "test:lighthouse": "cross-env NODE_ENV=production lhci autorun --config=tests/lighthouserc.js",
+    "save-credentials": "pwa-kit-dev save-credentials",
+    "build-translations": "npm run extract-default-translations && npm run compile-translations && npm run compile-translations:pseudo",
+    "start:pseudolocale": "npm run extract-default-translations && npm run compile-translations:pseudo && cross-env USE_PSEUDOLOCALE=true npm run start",
+    "test:max-file-size": "npm run build && bundlesize",
+    "compile-translations": "node ./node_modules/@salesforce/retail-react-app/scripts/translations/compile-folder.js translations",
+    "compile-translations:pseudo": "node ./node_modules/@salesforce/retail-react-app/scripts/translations/compile-pseudo.js translations/en-US.json",
+    "extract-default-translations": "node ./node_modules/@salesforce/retail-react-app/scripts/translations/extract-default-messages.js en-US",
+    "generate-sitemap": "node overrides/app/scripts/generate-sitemap.jsx"
+  },
+  "bundlesize": [
+    {
+      "path": "build/main.js",
+      "maxSize": "44 kB"
     },
-    "ccExtensibility": {
-        "extends": "@salesforce/retail-react-app",
-        "overridesDir": "overrides"
-    },
-    "devDependencies": {
-        "@salesforce/retail-react-app": "8.0.0",
-        "@testing-library/jest-dom": "^6.6.2",
-        "autoprefixer": "^10.4.21",
-        "del": "^8.0.1",
-        "gulp": "^5.0.1",
-        "gulp-clean-css": "^4.3.0",
-        "gulp-dart-sass": "^1.1.0",
-        "gulp-rename": "^2.1.0",
-        "mini-css-extract-plugin": "^2.9.4",
-        "os-browserify": "^0.3.0",
-        "path-browserify": "^1.0.1",
-        "postcss": "^8.5.6",
-        "postcss-loader": "^8.2.0",
-        "postcss-preset-env": "^10.4.0",
-        "process": "^0.11.10",
-        "sass": "^1.93.2",
-        "sass-loader": "^16.0.5"
-    },
-    "scripts": {
-        "lint": "pwa-kit-dev lint \"**/*.{js,jsx}\"",
-        "push": "npm run build && pwa-kit-dev push",
-        "test": "pwa-kit-dev test",
-        "compile:scss": "gulp compile-scss",
-        "watch:scss": "gulp watch-scss",
-        "minify:css": "gulp minify-css",
-        "minify:js": "gulp minify-js",
-        "build": "npm run compile:scss && npm run build-translations && npm run generate-sitemap && pwa-kit-dev build",
-        "start": "npm run compile:scss && cross-env NODE_ICU_DATA=node_modules/full-icu pwa-kit-dev start",
-        "format": "pwa-kit-dev format \"**/*.{js,jsx}\"",
-        "lint:fix": "npm run lint -- --fix",
-        "tail-logs": "pwa-kit-dev tail-logs",
-        "postinstall": "npm run compile-translations && npm run compile-translations:pseudo",
-        "analyze-build": "cross-env MOBIFY_ANALYZE=true npm run build",
-        "start:inspect": "npm run start -- --inspect",
-        "test:lighthouse": "cross-env NODE_ENV=production lhci autorun --config=tests/lighthouserc.js",
-        "save-credentials": "pwa-kit-dev save-credentials",
-        "build-translations": "npm run extract-default-translations && npm run compile-translations && npm run compile-translations:pseudo",
-        "start:pseudolocale": "npm run extract-default-translations && npm run compile-translations:pseudo && cross-env USE_PSEUDOLOCALE=true npm run start",
-        "test:max-file-size": "npm run build && bundlesize",
-        "compile-translations": "node ./node_modules/@salesforce/retail-react-app/scripts/translations/compile-folder.js translations",
-        "compile-translations:pseudo": "node ./node_modules/@salesforce/retail-react-app/scripts/translations/compile-pseudo.js translations/en-US.json",
-        "extract-default-translations": "node ./node_modules/@salesforce/retail-react-app/scripts/translations/extract-default-messages.js en-US",
-        "generate-sitemap": "node overrides/app/scripts/generate-sitemap.jsx"
-    },
-    "bundlesize": [
-        {
-            "path": "build/main.js",
-            "maxSize": "44 kB"
-        },
-        {
-            "path": "build/vendor.js",
-            "maxSize": "320 kB"
-        }
-    ],
-    "browserslist": [
-        "iOS >= 9.0",
-        "Android >= 4.4.4",
-        "last 4 ChromeAndroid versions"
-    ],
-    "dependencies": {
-        "@chakra-ui/layout": "^2.3.1",
-        "@chakra-ui/utils": "^2.2.4",
-        "@constructor-io/constructorio-client-javascript": "^2.42.3",
-        "@constructor-io/constructorio-ui-autocomplete": "^1.20.1",
-        "@contentful/rich-text-react-renderer": "^15.19.0",
-        "@formatjs/intl": "^2.10.9",
-        "@fortawesome/fontawesome-svg-core": "^6.6.0",
-        "@fortawesome/free-solid-svg-icons": "^6.6.0",
-        "@fortawesome/react-fontawesome": "^0.2.2",
-        "@hookform/resolvers": "^5.0.1",
-        "@react-google-maps/api": "^2.20.5",
-        "@stripe/react-stripe-js": "^2.3.1",
-        "@stripe/stripe-js": "^2.1.9",
-        "@types/react-gtm-module": "^2.0.3",
-        "ajv": "6.12.6",
-        "ajv-keywords": "3.5.2",
-        "axios": "^1.5.1",
-        "body-parser": "^1.20.2",
-        "contentful": "^10.6.11",
-        "cross-fetch": "^3.1.6",
-        "css-loader": "^6.10.0",
-        "date-fns": "^4.1.0",
-        "dotenv": "^16.4.5",
-        "prop-types": "^15.8.1",
-        "react-hook-form": "^7.56.4",
-        "react-icons": "^5.3.0",
-        "react-jsx-parser": "^2.4.0",
-        "react-slick": "0.30.2",
-        "stripe": "^19.1.0"
-    },
-    "overrides": {
-        "@salesforce/commerce-sdk-react": "3.2.0",
-        "@salesforce/pwa-kit-runtime": "3.9.2"
+    {
+      "path": "build/vendor.js",
+      "maxSize": "320 kB"
     }
+  ],
+  "browserslist": [
+    "iOS >= 9.0",
+    "Android >= 4.4.4",
+    "last 4 ChromeAndroid versions"
+  ],
+  "dependencies": {
+    "@chakra-ui/layout": "^2.3.1",
+    "@chakra-ui/utils": "^2.2.4",
+    "@constructor-io/constructorio-client-javascript": "^2.42.3",
+    "@constructor-io/constructorio-ui-autocomplete": "^1.20.1",
+    "@contentful/rich-text-react-renderer": "^15.19.0",
+    "@formatjs/intl": "^2.10.9",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^5.0.1",
+    "@react-google-maps/api": "^2.20.5",
+    "@salesforce/commerce-sdk-react": "4.0.0",
+    "@salesforce/pwa-kit-dev": "3.13.0",
+    "@salesforce/pwa-kit-react-sdk": "3.13.0",
+    "@salesforce/pwa-kit-runtime": "3.13.0",
+    "@stripe/react-stripe-js": "^2.3.1",
+    "@stripe/stripe-js": "^2.1.9",
+    "@types/react-gtm-module": "^2.0.3",
+    "ajv": "6.12.6",
+    "ajv-keywords": "3.5.2",
+    "axios": "^1.5.1",
+    "body-parser": "^1.20.2",
+    "contentful": "^10.6.11",
+    "cross-fetch": "^3.1.6",
+    "css-loader": "^6.10.0",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.5",
+    "prop-types": "^15.8.1",
+    "react-hook-form": "^7.56.4",
+    "react-icons": "^5.3.0",
+    "react-jsx-parser": "^2.4.0",
+    "react-slick": "0.30.2",
+    "stripe": "^19.1.0"
+  },
+  "overrides": {
+    "@salesforce/pwa-kit-dev": "3.12.0",
+    "@salesforce/pwa-kit-runtime": "3.12.0",
+    "@salesforce/pwa-kit-react-sdk": "3.12.0",
+    "@salesforce/commerce-sdk-react": "4.0.0"
+  }
 }

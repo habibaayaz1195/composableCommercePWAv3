@@ -159,10 +159,8 @@ const {handler} = runtime.createHandler(options, (app) => {
             })
                 .then(async (res) => {
                     console.log(res.data.access_token);
-
                     let access_token = res.data.access_token;
-
-                    let organizationID = 'f_ecom_zzkc_009';
+                    let organizationID = 'f_ecom_zzkc_006';
                     let shortCode = 'kv7kzm78';
                     let siteId = 'RefArch';
 
