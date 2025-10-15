@@ -15,7 +15,6 @@ import {getAppOrigin} from '@salesforce/pwa-kit-react-sdk/utils/url'
 import {getConfig} from '@salesforce/pwa-kit-runtime/utils/ssr-config'
 import {useQuery, useQueries} from '@tanstack/react-query'
 import {StoreLocatorProvider} from '../store-locator/context'
-// import {StoreLocatorProvider} from '@salesforce/retail-react-app/app/components/store-locator/context'
 
 import {
     useAccessToken,
@@ -41,7 +40,7 @@ import Header from '@salesforce/retail-react-app/app/components/header'
 import OfflineBanner from '@salesforce/retail-react-app/app/components/offline-banner'
 import OfflineBoundary from '@salesforce/retail-react-app/app/components/offline-boundary'
 import ScrollToTop from '@salesforce/retail-react-app/app/components/scroll-to-top'
-import Footer from '@salesforce/retail-react-app/app/components/footer'
+import Footer from '../footer'
 import CheckoutHeader from '@salesforce/retail-react-app/app/pages/checkout/partials/checkout-header'
 import CheckoutFooter from '@salesforce/retail-react-app/app/pages/checkout/partials/checkout-footer'
 import {DrawerMenu} from '../drawer-menu'
@@ -290,6 +289,47 @@ const App = (props) => {
                             type="text/javascript"
                         ></script>
                     )}
+
+                    {/* Preload critical fonts */}
+                    <link
+                        rel="preload"
+                        href="static/fonts/geomanist-regular-webfont.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin="anonymous"
+                    />
+                    <link
+                        rel="preload"
+                        href="static/fonts/geomanist-bold-webfont.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin="anonymous"
+                    />
+                    <link
+                        rel="preload"
+                        href="static/fonts/geomanist-medium-webfont.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin="anonymous"
+                    />
+                    <link
+                        rel="preload"
+                        href="static/fonts/geomanist-book-webfont.woff2"
+                        as="font"
+                        type="font/woff2"
+                        crossOrigin="anonymous"
+                    />
+                    <link
+                        rel="stylesheet"
+                        type="text/css"
+                        href={getAssetUrl('static/fonts/font.css')}
+                    />
+
+                    <link
+                        rel="stylesheet"
+                        type="text/css"
+                        href={getAssetUrl('static/css/main.min.css')}
+                    />
                 </Helmet>
                 <IntlProvider
                     onError={(err) => {

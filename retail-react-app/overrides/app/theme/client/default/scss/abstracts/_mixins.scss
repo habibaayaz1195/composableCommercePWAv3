@@ -1,0 +1,75 @@
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 767px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+
+@mixin media-min($breakpoint) {
+  @if $breakpoint == xs {
+    @media (min-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == xxl {
+    @media (min-width: $breakpoint-xxl) { @content; }
+  }
+}
+
+
+@mixin media-max($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == xxl {
+    @media (max-width: $breakpoint-xxl) { @content; }
+  }
+}
+
+/*
+// Apply styles for screens at least 576px wide
+@include media-min(sm) {
+  padding: 24px;
+}
+
+// Apply styles for screens at least 768px wide
+@include media-min(md) {
+  padding: 32px;
+}
+
+// Apply styles for screens at least 992px wide
+@include media-min(lg) {
+  padding: 40px;
+}
+
+// Apply styles for screens up to 768px wide
+@include media-max(md) {
+  font-size: 16px;
+}
+
+// Apply styles for screens up to 576px wide
+@include media-max(sm) {
+  font-size: 14px;
+}
+
+// Apply styles only between 576px and 768px
+@include media-min(sm) {
+  @include media-max(md) {
+    background-color: green;
+  }
+}
+*/

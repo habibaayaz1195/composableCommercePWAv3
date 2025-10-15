@@ -1,0 +1,106 @@
+@use '../abstracts/variables' as *;
+
+:root {
+    /** ==================================================================== **/
+
+    /** Create Custom CSS Variables from "sfra bootstrap override" variables **/
+
+    /** ==================================================================== **/
+    --color-white: #{$white};
+    --color-black: #{$black};
+    --color-blue: #{$blue};
+    --color-green: #{$green};
+    --color-primary: #002561;
+    --color-red: #{$red};
+    --color-success: var(--color-green);
+    --color-danger: var(--chakra-colors-racDefault-9);
+
+    //ACIMA colors
+    --chakra-colors-acimaDefault-1: $acima-blue-1;
+    --chakra-colors-acimaDefault-2: $acima-blue-2;
+    --chakra-colors-acimaDefault-3: $acima-blue-3;
+    --chakra-colors-acimaDefault-4: $acima-blue-4;
+    --chakra-colors-acimaDefault-5: $acima-gray-1;
+    --chakra-colors-acimaDefault-6: $acima-orange;
+    --chakra-colors-acimaDefault-7: $acima-gray-2;
+    --chakra-colors-acimaDefault-8: $acima-gray-3;
+    --chakra-colors-acimaDefault-9: $grey-3;
+    --chakra-colors-acimaDefault-10: $acima-orange-2;
+    --chakra-colors-acimaDefault-11: $acima-orange-3;
+    --chakra-colors-acimaDefault-12: $acima-orange-light;
+    --chakra-colors-acimaDefault-13: $acima-light-gray-1;
+    --chakra-colors-acimaDefault-14: $acima-blue-7;
+    --chakra-colors-acimaDefault-15: $acima-blue-6;
+
+    // --color-light-blue: #{$light-blue};
+    // --color-rac-blue-2: $rac-blue-2;
+    // --color-rac-light-blue: $rac-light-blue;
+    // --color-rac-ligh: $rac-ligh;
+    // --color-rac-gray-1: $rac-gray-1;
+    // --color-rac-gray-2: $rac-gray-2;
+    // --color-rac-gray-3: $rac-gray-3;
+    // --color-rac-yellow: $rac-yellow;
+    // --color-rac-red: $rac-red;
+
+    --chakra-colors-racDefault-1: $primary
+    --chakra-colors-racDefault-2: $rac-blue-2;
+    --chakra-colors-racDefault-3: $rac-light-blue;
+    --chakra-colors-racDefault-4: $rac-ligh;
+    --chakra-colors-racDefault-5: $rac-gray-1;
+    --chakra-colors-racDefault-6: $rac-gray-2;
+    --chakra-colors-racDefault-7: $rac-gray-3;
+    --chakra-colors-racDefault-8: $rac-yellow;
+    --chakra-colors-racDefault-9: $rac-red;
+
+    // Consolidated values
+    --color-grey1: #{$grey1};
+    --color-grey2: #{$grey2};
+    --color-grey3: #{$grey3};
+    --color-grey4: #{$grey4};
+    --color-grey5: #{$grey5};
+    --color-grey6: #{$grey6};
+    --color-grey7: #{$grey7};
+    --color-grey8: #{$grey8};
+    --color-grey9: #{$grey9};
+    --color-grey-transparent-1: rgba(0, 0, 0, 65%);
+    --color-grey-transparent-2: rgba(0, 0, 0, 25%);
+    --color-light-gray: var(--color-grey1);
+    --color-slightly-darker-gray: var(--color-grey4);
+    --color-dark-gray: var(--color-grey6);
+    --color-darker-gray: var(--color-grey7);
+    --color-horizontal-rule-grey: var(--color-grey3);
+    --color-product-number-grey: var(--color-grey3);
+    --color-horizontal-border-grey: var(--color-grey4);
+    --color-menu-link: var(--color-grey6);
+    --color-close-menu-bg: var(--color-grey2);
+    --color-link-color: var(--color-dark-gray);
+    --color-hr-border-color: var(--color-grey3);
+
+    /** ==================================================================== **/
+
+    /** Define skin named variables here                                    **/
+
+    /** ==================================================================== **/
+    --skin-background-color-1: var(--color-gray1);
+    --skin-border-color-1: var(--color-white);
+    --skin-main-text-color-1: var(--color-gray7);
+    --skin-main-text-color-2: var(--color-gray7);
+    --skin-menu-color-1: #444;
+    --skin-menu-color-1-invert: var(--color-white);
+    --skin-menu-color-2: #222;
+    --skin-link-color-1: #444;
+    --skin-link-color-2: var(--color-blue);
+    --skin-primary-color-1: var(--color-primary);
+    --skin-primary-color-2: var(--color-primary);
+    --skin-primary-color-invert-1: var(--color-white);
+    --skin-selectbox-background-color-1: var(--color-white);
+    --skin-selectbox-text-color-1: var(--skin-main-text-color-1);
+    --skin-banner-background-color-1: #444;
+    --skin-banner-background-color-2: #222;
+    --skin-banner-text-color-1: var(--color-white);
+    --skin-heading-color-1: var(--color-primary);
+    --skin-heading-color-1-invert: var(--color-white);
+    --skin-price-1: var(--color-gray7);
+    --skin-header-font: 'Dosis';
+    --skin-body-font: var(--font-family-sans-serif);
+}

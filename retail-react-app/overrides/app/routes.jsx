@@ -24,14 +24,32 @@ const MyNewRoute = loadable(() => import('./pages/my-new-route'))
 const ContentfulHome = loadable(()=>import("./pages/product-contentful"))
 const ContentfulAboutus = loadable(()=>import("./pages/about-us-contentful"))
 const Checkout = loadable(() => import('./pages/checkout'), { fallback })
-const PageViewer = loadable(() => import('./pages/page-viewer'), {fallback})
-
 const ProductDetail = loadable(() => import('./pages/product-detail'))
+const PageViewer = loadable(() => import('./pages/page-viewer'), {fallback})
+const LandingPage = loadable(() => import('./pages/landing'), {fallback})
+
+const newRoute = {
+    path: '/:pageId',
+    component: PageViewer,
+};
+
+const catchAllIndex = _routes.findIndex((route) => route.path === '*');
+
+if (catchAllIndex !== -1) {
+    _routes.splice(catchAllIndex, 0, newRoute);
+} else {
+    _routes.push(newRoute);
+}
 
 const routes = [
     {
         path: '/',
         component: Home,
+        exact: true
+    },
+    {
+        path: '/home',
+        component: LandingPage,
         exact: true
     },
     {
@@ -44,7 +62,7 @@ const routes = [
         component: ContentfulAboutus,
         exact: true
     },
-	 {
+	{
         path: '/page-viewer/:pageId',
         component: PageViewer
     },

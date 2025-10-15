@@ -40,14 +40,14 @@ const Storefronts = () => {
                         </Box>
                         <Box
                             fontWeight="bold"
-                            letterSpacing="0.3em"
+                            letterSpacing="0.2em"
                             fontSize="14px !important"
                             lineHeight="18px !important"
                             textTransform="uppercase"
                             marginBottom="20px"
                             textAlign="center"
                         >
-                            <h4 display="inline-block"
+                            <h4 display="inline-block" fontSize="14px"
                                 margin="0 auto">CONTENTFUL</h4>
                         </Box>
                     </a>
@@ -61,14 +61,14 @@ const Storefronts = () => {
                         </Box>
                         <Box
                             fontWeight="bold"
-                            letterSpacing="0.3em"
+                            letterSpacing="0.2em"
                             fontSize="14px !important"
                             lineHeight="18px !important"
                             textTransform="uppercase"
                             marginBottom="20px"
                             textAlign="center"
                         >
-                            <h4 display="inline-block"
+                            <h4 display="inline-block" fontSize="14px"
                                 margin="0 auto">AMPLIENCE</h4>
                         </Box>
                     </a>
@@ -81,7 +81,7 @@ const Storefronts = () => {
                         </Box>
                         <Box
                             fontWeight="bold"
-                            letterSpacing="0.3em"
+                            letterSpacing="0.2em"
                             fontSize="14px !important"
                             lineHeight="18px !important"
                             textTransform="uppercase"
@@ -100,14 +100,14 @@ const Storefronts = () => {
                         </Box>
                         <Box
                             fontWeight="bold"
-                            letterSpacing="0.3em"
+                            letterSpacing="0.2em"
                             fontSize="14px !important"
                             lineHeight="18px !important"
                             textTransform="uppercase"
                             marginBottom="20px"
                             textAlign="center"
                         >
-                            <h4 display="inline-block"
+                            <h4 display="inline-block" fontSize="14px"
                                 margin="0 auto">CONSCIA</h4>
                         </Box>
                     </a>
@@ -120,14 +120,14 @@ const Storefronts = () => {
                         </Box>
                         <Box
                             fontWeight="bold"
-                            letterSpacing="0.3em"
+                            letterSpacing="0.2em"
                             fontSize="14px !important"
                             lineHeight="18px !important"
                             textTransform="uppercase"
                             marginBottom="20px"
                             textAlign="center"
                         >
-                            <h4 display="inline-block"
+                            <h4 display="inline-block" fontSize="14px"
                                 margin="0 auto">CLOUDINARY</h4>
                         </Box>
                     </a>
@@ -140,14 +140,14 @@ const Storefronts = () => {
                         </Box>
                         <Box
                             fontWeight="bold"
-                            letterSpacing="0.3em"
+                            letterSpacing="0.2em"
                             fontSize="14px !important"
                             lineHeight="18px !important"
                             textTransform="uppercase"
                             marginBottom="20px"
                             textAlign="center"
                         >
-                            <h4 display="inline-block"
+                            <h4 display="inline-block" fontSize="14px"
                                 margin="0 auto">ALGOLIA</h4>
                         </Box>
                     </a>

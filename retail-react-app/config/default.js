@@ -17,6 +17,8 @@ const getEnv = (key, fallback = '') =>
 
 const sites = require('./sites.js')
 
+const SITE_URL = getEnv('SITE_URL', 'https://localhost:3000')
+
 module.exports = {
     app: {
         url: {
@@ -25,6 +27,7 @@ module.exports = {
 
         defaultSite: 'RefArch',
         sites,
+        SITE_URL,
 
         commerceAPI: {
             proxyPath: '/mobify/proxy/api',
