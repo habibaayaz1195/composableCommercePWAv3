@@ -91,7 +91,7 @@
                     margin-bottom: 5px;
                     font-family: $fontGeomanistBold;
                     font-weight: 700;
-                    color: $acima-blue-4;
+                    color: $rc-blue-4;
 
                     @include media-max(md) {
                         font-size: 20px;
@@ -246,7 +246,7 @@
                     font-weight: 700;
                     font-family: $fontGeomanistBold;
                     margin-bottom: 0;
-                    color: $acima-blue-4;
+                    color: $rc-blue-4;
 
                     @include media-max(lg) {
                         line-height: 1;
@@ -453,14 +453,14 @@
                                 &:focus,
                                 &:focus-visible {
                                     background: rgba(185, 221, 255, 1) !important;
-                                    color: $acima-blue-4 !important;
+                                    color: $rc-blue-4 !important;
                                     border-color: transparent !important;
-                                    outline: 3px solid $acima-blue-6 !important;
+                                    outline: 3px solid $rc-blue-6 !important;
                                 }
 
                                 &:active {
-                                    background: $acima-blue-6 !important;
-                                    border-color: $acima-blue-6 !important;
+                                    background: $rc-blue-6 !important;
+                                    border-color: $rc-blue-6 !important;
                                     outline: none !important;
                                 }
                             }
@@ -495,7 +495,7 @@
                     }
 
                     h4 {
-                        color: $acima-blue-4;
+                        color: $rc-blue-4;
                         line-height: 45px;
                     }
 
@@ -593,12 +593,12 @@
 
                             .content-text {        
                                 > h4 {
-                                    color: $acima-blue-4;
+                                    color: $rc-blue-4;
                                     margin-bottom: 13px;
                                 }
         
                                 > p {
-                                    color: $acima-blue-4;
+                                    color: $rc-blue-4;
                                     font-size: 18px;
                                     line-height: 26px;
 
@@ -643,7 +643,7 @@
                     }
 
                     h4 {
-                        color: $acima-blue-4;
+                        color: $rc-blue-4;
                         line-height: 45px;
                     }
 
@@ -666,7 +666,7 @@
                     text-align: center;
 
                     p {
-                        color: $acima-blue-4;
+                        color: $rc-blue-4;
                         font-family: $fontGeomanistRegular;
                         font-size: 24px;
                         font-weight: 400;
@@ -730,12 +730,12 @@
 
                             .content-text {        
                                 > h4 {
-                                    color: $acima-blue-4;
+                                    color: $rc-blue-4;
                                     margin-bottom: 13px;
                                 }
         
                                 > p {
-                                    color: $acima-blue-4;
+                                    color: $rc-blue-4;
                                     font-size: 18px;
                                     line-height: 26px;
 
@@ -979,14 +979,14 @@
                 &:focus,
                 &:focus-visible {
                     background: rgba(185, 221, 255, 1) !important;
-                    color: $acima-blue-4 !important;
+                    color: $rc-blue-4 !important;
                     border-color: transparent !important;
-                    outline: 3px solid $acima-blue-6 !important;
+                    outline: 3px solid $rc-blue-6 !important;
                 }
 
                 &:active {
-                    background: $acima-blue-6 !important;
-                    border-color: $acima-blue-6 !important;
+                    background: $rc-blue-6 !important;
+                    border-color: $rc-blue-6 !important;
                     outline: none !important;
                 }
             }
@@ -1010,20 +1010,20 @@
 
                 &:hover {
                     background: rgba(185, 221, 255, 1) !important;
-                    color: $acima-blue-4 !important;
+                    color: $rc-blue-4 !important;
                 }
 
                 &:focus,
                 &:focus-visible {
                     background: rgba(185, 221, 255, 1) !important;
-                    color: $acima-blue-4 !important;
+                    color: $rc-blue-4 !important;
                     border-color: transparent !important;
-                    outline: 3px solid $acima-blue-6 !important;
+                    outline: 3px solid $rc-blue-6 !important;
                 }
 
                 &:active {
-                    background: $acima-blue-6 !important;
-                    border-color: $acima-blue-6 !important;
+                    background: $rc-blue-6 !important;
+                    border-color: $rc-blue-6 !important;
                     outline: none !important;
                 }
             }

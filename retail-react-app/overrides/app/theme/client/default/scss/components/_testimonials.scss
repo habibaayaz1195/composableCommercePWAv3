@@ -38,7 +38,7 @@
                 font-weight: 700;
                 font-family: $fontGeomanistBold;
                 margin-bottom: 0;
-                color: $acima-blue-4;
+                color: $rc-blue-4;
 
                 @include media-max(sm) {
                     font-size: 40px;
@@ -155,7 +155,7 @@
 
             .inner-content {
                 h4 {
-                    color: $acima-blue-4;
+                    color: $rc-blue-4;
                     line-height: inherit;
                     margin-bottom: 40px;
 
@@ -219,7 +219,7 @@
             font-weight: 500 !important;
             padding: 0 !important;
             background: transparent;
-            border-color: $acima-blue-2;
+            border-color: $rc-blue-2;
             border-width: 2px !important;
 
             &:hover {
@@ -230,7 +230,7 @@
 }
 
 .testimonial-wrapper {
-    background: $acima-blue-5;
+    background: $rc-blue-5;
 
     .custom-heading-2 {
         text-align: center;

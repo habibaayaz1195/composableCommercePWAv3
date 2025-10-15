@@ -119,7 +119,7 @@
 
 #faqs {
     .section-wrapper.inline-content-button.bg-orange {
-        background: $acima-orange;
+        background: $rc-orange;
         .headerLink {
             max-width: 122px;
             min-width: 122px;
@@ -162,7 +162,7 @@
             }
 
             p {
-                color: $acima-light-gray-1;
+                color: $rc-light-gray-1;
                 font-size: 16px;
                 line-height: 20px;
                 font-weight: 400;
@@ -181,7 +181,7 @@
                     }
                 }
                 strong {
-                    color: $acima-blue-4;
+                    color: $rc-blue-4;
                     font-weight: 700;
                     font-family: $fontGeomanistBold;
                 }
@@ -193,12 +193,12 @@
 
                 li {
                     margin-bottom: 16px;
-                    color: $acima-light-gray-1;
+                    color: $rc-light-gray-1;
                     font-size: 16px;
                     line-height: 22px;
 
                     strong {
-                        color: $acima-blue-4;
+                        color: $rc-blue-4;
                         font-weight: 700;
                         font-family: $fontGeomanistBold;
                     }
@@ -246,12 +246,12 @@
             }
 
             table {
-                border: 1px solid $acima-light-gray-1;
+                border: 1px solid $rc-light-gray-1;
                 display: block;
                 overflow-x: auto;
 
                 tr {
-                    border-top: 1px solid $acima-light-gray-1;
+                    border-top: 1px solid $rc-light-gray-1;
 
                     &:first-child {
                         border: none;
@@ -261,7 +261,7 @@
                         padding: 16px;
 
                         a {
-                            color: $acima-blue-2;
+                            color: $rc-blue-2;
                             text-decoration: underline;
                         }
 
@@ -368,7 +368,7 @@
             > h4 {
                 font-size: 40px;
                 line-height: 1.2;
-                color: $acima-blue-4;
+                color: $rc-blue-4;
 
                 @include media-max(md) {
                     text-align: center;
@@ -380,7 +380,7 @@
         .rich-text-box,
         .rich-text-editor {
             p {
-                color: $acima-light-gray-1;
+                color: $rc-light-gray-1;
                 line-height: 24px;
 
                 p, span {
@@ -393,7 +393,7 @@
                 padding-left: 40px;
 
                 li {
-                    color: $acima-light-gray-1;
+                    color: $rc-light-gray-1;
                     line-height: 1.5;
                     margin-bottom: 10px;
                 }
@@ -410,12 +410,12 @@
             h4 {
                 font-weight: 400;
                 font-family: $fontGeomanistBook;
-                color: $acima-blue-4;
+                color: $rc-blue-4;
                 font-size: 16px;
             }
 
             a {
-                color: $acima-blue-2;
+                color: $rc-blue-2;
                 font-weight: 400;
                 font-family: $fontGeomanistBook;
                 text-decoration: underline;
@@ -445,7 +445,7 @@
         margin-bottom: 40px;
 
         a {
-            color: $acima-light-gray-1;
+            color: $rc-light-gray-1;
             font-weight: 500;
             font-family: $fontGeomanistMedium;
             
@@ -640,7 +640,7 @@
                     font-size: 18px;
                     line-height: 24px;
                     margin-bottom: 32px;
-                    color: $acima-blue-4;
+                    color: $rc-blue-4;
 
                     &:last-child {
                         margin-bottom: 0;

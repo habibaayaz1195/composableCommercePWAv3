@@ -10,22 +10,22 @@
         }
 
         .chakra-form__label {
-            color: $acima-red-1 !important;
+            color: $rc-red-1 !important;
         }
 
         .chakra-input {
             box-shadow: none;
             border: 2px solid;
-            background: $acima-red-2;
-            color: $acima-red-1;
-            border-color: $acima-red-1 !important;
+            background: $rc-red-2;
+            color: $rc-red-1;
+            border-color: $rc-red-1 !important;
             font-weight: 400;
             font-family: $fontGeomanistRegular;
             margin-bottom: 0;
         }
 
         .chakra-form__error-message {
-            color: $acima-red-1;
+            color: $rc-red-1;
             font-size: 12px;
             font-weight: 400;
             font-family: $fontGeomanistRegular;
@@ -42,7 +42,7 @@
     padding: 10px 0;
 
     &.errorState {
-        color: $acima-red-1;
+        color: $rc-red-1;
     }
 
     &.successState {

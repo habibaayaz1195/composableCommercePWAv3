@@ -96,7 +96,7 @@
             .textHeader {
                 .heading-inner {
                     margin-bottom: 32px;
-                    color: $acima-blue-4;
+                    color: $rc-blue-4;
 
                     h4 {
                         color: inherit;
@@ -120,7 +120,7 @@
                     text-align: center;
 
                     p {
-                        color: $acima-blue-4;
+                        color: $rc-blue-4;
                         font-family: $fontGeomanistRegular;
                         font-size: 24px;
                         font-weight: 400;
@@ -160,7 +160,7 @@
                     .vertical-tile-body {
                         .image-tile-image {
                             @include media-max(sm) {
-                                border: 1px solid $acima-gray-1;
+                                border: 1px solid $rc-gray-1;
                             }
                         }
                     }
@@ -184,7 +184,7 @@
             max-width: 818px;
             margin: 0 auto;
             border-radius: 16px;
-            border: 1px solid $acima-gray-2;
+            border: 1px solid $rc-gray-2;
 
             @include media-max(sm) {
                 padding: 24px;
@@ -227,7 +227,7 @@
                             line-height: 32px;
                             font-family: $fontGeomanistBold;
                             font-weight: 700;
-                            color: $acima-blue-4;
+                            color: $rc-blue-4;
                             margin-bottom: 32px;
                             text-align: center;
 
@@ -239,7 +239,7 @@
                         }
 
                         p {
-                            color: $acima-blue-4;
+                            color: $rc-blue-4;
 
                             &:last-child {
                                 margin-bottom: 0;
@@ -271,9 +271,9 @@
                         height: 46px;
                         line-height: 46px;
                         border-width: 2px !important;
-                        border-color: $acima-orange !important;
+                        border-color: $rc-orange !important;
                         border-radius: 32px !important;
-                        color: $acima-orange !important;
+                        color: $rc-orange !important;
                         font-size: 14px !important;
                         text-align: center;
                         padding: 0 !important;
