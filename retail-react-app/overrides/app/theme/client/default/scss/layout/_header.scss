@@ -4,7 +4,7 @@
 // Header styles
 
 .main-header {
-    background: linear-gradient(93.34deg, var(--chakra-colors-acimaDefault-1) -9.63%, var(--chakra-colors-acimaDefault-2) 123.19%, var(--chakra-colors-acimaDefault-3) 223.39%) !important;
+    background: linear-gradient(93.34deg, var(--chakra-colors-rcDefault-1) -9.63%, var(--chakra-colors-rcDefault-2) 123.19%, var(--chakra-colors-rcDefault-3) 223.39%) !important;
     box-shadow: 0 0 0 !important;
     padding-bottom: 12px;
     padding-top: 10px;
@@ -25,7 +25,7 @@
 
     .login-dropdown {
         background: var(--color-white) !important;
-        color: var(--chakra-colors-acimaDefault-2) !important;
+        color: var(--chakra-colors-rcDefault-2) !important;
         border-radius: 70px;
         margin-left: 20px;
         font-weight: 700 !important;
@@ -63,14 +63,14 @@
 
     .login-dropdown-menu-list {
         button, a {
-            color: var(--chakra-colors-acimaDefault-4);
+            color: var(--chakra-colors-rcDefault-4);
             font-weight: 400 !important;
             font-family: $fontGeomanistBook;
             font-size: 16px;
 
             &:hover,
             &:focus {
-                background: var(--chakra-colors-acimaDefault-2);
+                background: var(--chakra-colors-rcDefault-2);
                 color: var(--color-white);
             }
         }
@@ -186,7 +186,7 @@
                             font-family: 'Geomanist-regular-book';
         
                             &:hover {
-                                background-color: var(--chakra-colors-acimaDefault-2);
+                                background-color: var(--chakra-colors-rcDefault-2);
                                 border-radius: 8px;
 
                                 a {
@@ -291,7 +291,7 @@
                 }
 
                 a, label {
-                    color: var(--chakra-colors-acimaDefault-4);
+                    color: var(--chakra-colors-rcDefault-4);
                     display: block;
                     font-size: 16px;
                     font-family: 'Geomanist-regular-book';
@@ -301,7 +301,7 @@
                         display: inline-block;
 
                         path {
-                            fill: var(--chakra-colors-acimaDefault-4);
+                            fill: var(--chakra-colors-rcDefault-4);
                         }
                     }
                 }
@@ -331,14 +331,14 @@
 
                         svg {
                             path {
-                                fill: var(--chakra-colors-acimaDefault-4);
+                                fill: var(--chakra-colors-rcDefault-4);
                             }
                         }
                     }
                 }
 
                 .submenu {
-                    background: var(--chakra-colors-acimaDefault-5);
+                    background: var(--chakra-colors-rcDefault-5);
                     padding: 16px 24px 16px;
                     border-radius: 16px;
                     list-style: none;
@@ -355,7 +355,7 @@
                         margin-bottom: 4px;
 
                         a {
-                            color: var(--chakra-colors-acimaDefault-4);
+                            color: var(--chakra-colors-rcDefault-4);
                             display: block;
                             font-size: 16px;
                             font-family: 'Geomanist-regular-book';
@@ -536,7 +536,7 @@
         font-family: 'Geomanist-regular-book';
 
         @include media-max(lg) {
-            color: var(--chakra-colors-acimaDefault-4);
+            color: var(--chakra-colors-rcDefault-4);
             width: 100%;
         }
     }
@@ -564,7 +564,7 @@
         padding: 12px;
 
         @include media-max(lg) {
-            background: var(--chakra-colors-acimaDefault-5);
+            background: var(--chakra-colors-rcDefault-5);
             position: relative;
             top: 0;
             margin-top: 15px;
@@ -582,13 +582,13 @@
         border-radius: 8px;
         cursor: pointer;
         gap: 8px;
-        color: var(--chakra-colors-acimaDefault-4);
+        color: var(--chakra-colors-rcDefault-4);
         font-size: 16px;
         font-family: 'Geomanist-regular-book';
         font-weight: 400;
 
         @include media-max(md) {
-            color: var(--chakra-colors-acimaDefault-4)
+            color: var(--chakra-colors-rcDefault-4)
         }
 
         &:first-child {
@@ -596,23 +596,23 @@
         }
 
         &.selected {
-            background: var(--chakra-colors-acimaDefault-2);
+            background: var(--chakra-colors-rcDefault-2);
             color: white;
     
             @include media-max(md) {
                 background: transparent;
-                color: var(--chakra-colors-acimaDefault-4)
+                color: var(--chakra-colors-rcDefault-4)
             }
         }
     }
 
     .dropdown-item:hover {
-        background: var(--chakra-colors-acimaDefault-2);
+        background: var(--chakra-colors-rcDefault-2);
         color: white;
 
         @include media-max(md) {
             background: transparent;
-            color: var(--chakra-colors-acimaDefault-4)
+            color: var(--chakra-colors-rcDefault-4)
         }
     }
 }

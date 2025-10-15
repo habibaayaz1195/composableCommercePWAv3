@@ -10,24 +10,24 @@ export default {
     },
     variants: {
         solid: (props) =>
-            props.colorScheme === 'acimaDefault'
+            props.colorScheme === 'rcDefault'
                 ? {
-                      backgroundColor: 'acimaDefault.6',
+                      backgroundColor: 'rcDefault.6',
                       color: 'white',
                       borderRadius: '4px',
                       fontSize: '16px',
                       fontWeight: '700',
                       textDecoration: 'none',
-                      _hover: {bg: 'acimaDefault.10', textDecoration: 'none', _disabled: {bg: 'acimaDefault.11'}},
-                      _focus: {bg: 'acimaDefault.6', textDecoration: 'none', outline: '3px solid acimaDefault.11'},
-                      _active: {bg: 'acimaDefault.12'},
-                      _disabled: {opacity: '0.6', color: 'white', bg: 'acimaDefault.11'}
+                      _hover: {bg: 'rcDefault.10', textDecoration: 'none', _disabled: {bg: 'rcDefault.11'}},
+                      _focus: {bg: 'rcDefault.6', textDecoration: 'none', outline: '3px solid rcDefault.11'},
+                      _active: {bg: 'rcDefault.12'},
+                      _disabled: {opacity: '0.6', color: 'white', bg: 'rcDefault.11'}
                   }
                 : {},
         outline: (props) =>
-            props.colorScheme === 'acimaDefault.6'
-                ? {color: 'acimaDefault.6', _hover: {bg: 'acimaDefault.6'}, borderColor: 'acimaDefault.6'}
-                : {color: 'acimaDefault.6', _hover: {bg: 'acimaDefault.6'}},
+            props.colorScheme === 'rcDefault.6'
+                ? {color: 'rcDefault.6', _hover: {bg: 'rcDefault.6'}, borderColor: 'rcDefault.6'}
+                : {color: 'rcDefault.6', _hover: {bg: 'rcDefault.6'}},
         footer: {
             fontSize: 'sm',
             backgroundColor: 'gray.100',

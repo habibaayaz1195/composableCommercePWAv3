@@ -8,7 +8,7 @@ export default {
     global: {
         'html, body': {
             backgroundColor: 'white',
-            color: 'acimaDefault.4'
+            color: 'rcDefault.4'
         },
         body: {
             minHeight: '100vh'

@@ -23,7 +23,7 @@ export default {
         },
         topHeaderContent: {
             color: 'white',
-            backgroundColor: 'acimaDefault.4'
+            backgroundColor: 'rcDefault.4'
         },
         topContentContainer: {
             maxWidth: 'container.xxl',

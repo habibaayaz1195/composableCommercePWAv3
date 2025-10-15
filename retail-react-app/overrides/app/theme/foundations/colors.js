@@ -168,7 +168,7 @@ const colors = {
         900: '#520066'
     },
 
-    acimaDefault: {
+    rcDefault: {
         1: '#0033a1',
         2: '#0070e0',
         3: '#6bc4e8',
