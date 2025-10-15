@@ -26,7 +26,6 @@ const ContentfulAboutus = loadable(()=>import("./pages/about-us-contentful"))
 const Checkout = loadable(() => import('./pages/checkout'), { fallback })
 const ProductDetail = loadable(() => import('./pages/product-detail'))
 const PageViewer = loadable(() => import('./pages/page-viewer'), {fallback})
-const LandingPage = loadable(() => import('./pages/landing'), {fallback})
 
 const newRoute = {
     path: '/:pageId',
@@ -45,11 +44,6 @@ const routes = [
     {
         path: '/',
         component: Home,
-        exact: true
-    },
-    {
-        path: '/home',
-        component: LandingPage,
         exact: true
     },
     {
