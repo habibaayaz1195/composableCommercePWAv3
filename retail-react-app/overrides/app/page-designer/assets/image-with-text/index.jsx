@@ -6,9 +6,15 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Box, Image, Link as ChakraLink, Text} from '@chakra-ui/react'
+import {
+    Box,
+    Image,
+    Link as ChakraLink,
+    Text
+} from '@salesforce/retail-react-app/app/components/shared/ui'
 import Link from '@salesforce/retail-react-app/app/components/link'
 import {isAbsoluteURL} from '@salesforce/retail-react-app/app/page-designer/utils'
+
 
 /**
  * Image with text component
@@ -26,7 +32,9 @@ export const ImageWithText = ({ITCLink, ITCText, image, heading, alt}) => {
     const isAbsolute = isAbsoluteURL(ITCLink)
     const LinkWrapper = isAbsolute ? ChakraLink : Link
     const linkProps = isAbsolute ? {href: ITCLink} : {to: ITCLink}
-   
+
+    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url)
+
     return (
         <Box className={'image-with-text'}>
             <Box
@@ -43,11 +51,12 @@ export const ImageWithText = ({ITCLink, ITCText, image, heading, alt}) => {
                         <Image
                             className={'image-with-text-image'}
                             data-testid={'image-with-text-image'}
-                            src={image?.src?.mobile ? image?.src?.mobile : image?.url}
+                            src={imageURL}
                             ignoreFallback={true}
                             alt={alt}
                             title={alt}
                             filter={'brightness(40%)'}
+                            loading="lazy"
                         />
                     </LinkWrapper>
                 </picture>
@@ -76,7 +85,7 @@ export const ImageWithText = ({ITCLink, ITCText, image, heading, alt}) => {
                                         sx={{
                                             ['h1, h2, h3, h4, h5, h6']: {
                                                 fontSize: 'revert',
-                                                 fontWeight: 'revert'
+                                                fontWeight: 'revert'
                                             },
                                             p: {
                                                 display: 'flex',

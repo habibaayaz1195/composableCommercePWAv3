@@ -6,7 +6,8 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Image } from '@chakra-ui/react'
+import {Box, Image} from '@salesforce/retail-react-app/app/components/shared/ui'
+
 
 /**
  * Simple ImageTile component that can be used inside any Layout component.
@@ -14,20 +15,23 @@ import { Box, Image } from '@chakra-ui/react'
  * @returns {JSX.Element}
  */
 export const ImageTile = ({ image }) => {
+
+    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url)
+
     return (
         <Box className={'image-tile'}>
             <figure className={'image-tile-figure'}>
                 <picture>
                     <source srcSet={image?.src?.tablet} media="(min-width: 48em)" />
                     <source srcSet={image?.src?.desktop} media="(min-width: 64em)" />
-                    <Image
-
+                    <Image                       
                         className={'image-tile-image'}
                         data-testid={'image-tile-image'}
-                        src={image?.src?.mobile ? image?.src?.mobile : image?.url}
+                        src={imageURL}
                         ignoreFallback={true}
                         alt={image?.alt}
                         title={image?.alt}
+                        loading="lazy"
                     />
                 </picture>
             </figure>

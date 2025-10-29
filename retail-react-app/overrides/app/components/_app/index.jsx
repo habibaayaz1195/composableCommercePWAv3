@@ -43,8 +43,8 @@ import ScrollToTop from '@salesforce/retail-react-app/app/components/scroll-to-t
 import Footer from '../footer'
 import CheckoutHeader from '@salesforce/retail-react-app/app/pages/checkout/partials/checkout-header'
 import CheckoutFooter from '@salesforce/retail-react-app/app/pages/checkout/partials/checkout-footer'
-import {DrawerMenu} from '../drawer-menu'
-import {ListMenu} from '../list-menu'
+import DrawerMenu from '@salesforce/retail-react-app/app/components/drawer-menu'
+import ListMenu from '@salesforce/retail-react-app/app/components/list-menu'
 
 import {HideOnDesktop, HideOnMobile} from '@salesforce/retail-react-app/app/components/responsive'
 import AboveHeader from '@salesforce/retail-react-app/app/components/_app/partials/above-header'
