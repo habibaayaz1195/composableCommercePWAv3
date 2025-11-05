@@ -4,12 +4,38 @@ import { useQuery } from '@tanstack/react-query'
 import Aboutuspage from '../../models/Aboutuspage';
 import { SimpleGrid, Box, Image, Heading, Text, Flex, Stack } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { createClient } from 'contentful';
 
 const AboutUsContentful = () => {
     const [components, setComponents] = useState([])
 
-    const spaceid = "rb9ez79izqmr"
-    const access_token = "WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o"
+    const client = createClient({
+        space: 'rb9ez79izqmr',
+        accessToken: 'WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o'
+    });
+
+    async function getFeaturedCategories() {
+        const res = await client.getEntries({
+            content_type: 'homepage',
+            //'fields.componentType': 'f_Categories',
+            include: 2 // fetch linked category data
+        });
+
+        const homepage = res.items[0];
+        const featuredCategories = homepage.fields.featuredCategories.map(cat => ({
+            title: cat.fields.title,
+            image: cat.fields.image?.fields.file.url,
+            slug: cat.fields.slug,
+            link: cat.fields.categoryLink
+        }));
+
+        console.log('Featured Categories', featuredCategories);
+    }
+
+    getFeaturedCategories();
+
+    //const spaceid = "rb9ez79izqmr"
+    //const access_token = "WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o"
     const { isLoading, error, data } = useQuery({ 
         queryKey: ['aboutuspage'],
         queryFn: () =>
