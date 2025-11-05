@@ -22,7 +22,7 @@ export default {
             paddingRight: [4]
         },
         topHeaderContent: {
-            color: 'white',
+            color: '#181818',
             backgroundColor: 'rcDefault.4'
         },
         topContentContainer: {
