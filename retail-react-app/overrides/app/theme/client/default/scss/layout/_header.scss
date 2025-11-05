@@ -1,10 +1,9 @@
 @use '../skin/skinVariables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/variables' as *;
-// Header styles
 
+// Header styles
 .main-header {
-    background: linear-gradient(93.34deg, var(--chakra-colors-acimaDefault-1) -9.63%, var(--chakra-colors-acimaDefault-2) 123.19%, var(--chakra-colors-acimaDefault-3) 223.39%) !important;
     box-shadow: 0 0 0 !important;
     padding-bottom: 12px;
     padding-top: 10px;
@@ -23,630 +22,63 @@
         }
     }
 
-    .login-dropdown {
-        background: var(--color-white) !important;
-        color: var(--chakra-colors-acimaDefault-2) !important;
-        border-radius: 70px;
-        margin-left: 20px;
-        font-weight: 700 !important;
-        font-family: 'Geomanist-bold';
-        font-size: 16px;
+    .search-wrapper {
+        position: relative;
+        margin-right: 24px;
 
         @include media-max(lg) {
-            margin-left: 0;
+            order: 1;
+            margin-right: 12px;
+            padding: 0 12px;
+        }
+
+        input {
+            border: none;
+            border-bottom: 1px solid var(--chakra-colors-gray-900);
+            font-size: 12px;
             padding: 0;
-            background: transparent !important;
-            color: var(--color-white) !important;
-            border-radius: 0 !important;
-            border: none !important;
+            box-shadow: none;
         }
-
-        @include media-max(md) {
-            font-family: 'Geomanist-regular-book' !important;
-            font-weight: 400 !important;
-            font-size: 16px;
-        }
-    }
-
-    .login-dropdown.logged-in{
-        background: none !important;
-        color: white !important;
-        border: none;
-        font-weight: 400 !important;
-        font-family: 'Geomanist-regular-book';
-        font-size: 16px;
-         &:hover,
-        &:focus {
-            background: none !important;
-        }
-    }
-
-    .login-dropdown-menu-list {
-        button, a {
-            color: var(--chakra-colors-acimaDefault-4);
-            font-weight: 400 !important;
-            font-family: $fontGeomanistBook;
-            font-size: 16px;
-
-            &:hover,
-            &:focus {
-                background: var(--chakra-colors-acimaDefault-2);
-                color: var(--color-white);
-            }
-        }
-    }
-  
-    .menu-bar {
-        padding: 10px 10px;
-      
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-      
-            .menu-list {
-                list-style-type: none;
-                display: flex;
-                align-items: center;
-                gap: 32px;
-      
-                .menu-item {
-                    position: relative;
-                    color: white;
-                    font-size: 16px;
-                    cursor: pointer;
-
-                    @include media-max(xl) {
-                        font-size: 14px;
-                    }       
-
-                    &.menu-item-login,
-                    &.btn-app {
-                        display: none;
-                    }
-
-                    .menu-check {
-                        display: none;
-                    }
-      
-                    a, label {
-                        text-decoration: none;
-                        color: white;
-                        display: flex;
-                        align-items: center;
-                        cursor: pointer;
-                        font-weight: 400;
-                        font-family: 'Geomanist-regular-book';
-        
-                        &:hover {
-                            text-decoration: none;
-                        }
-                    }
-
-                    label {
-                        &::after {
-                            content: '';
-                            display: block;
-                            width: 12px;
-                            height: 12px;
-                            background: url(../img/chevron-down-thick.svg) no-repeat 0 0;
-                            display: inline-block;
-                            margin-left: 5px;
-                            transition: transform 0.3s;
-                        }
-                        
-                        > img {
-                            margin-right: 6px;
-                        }
-                    }
-
-                    .dropdown-indicator {
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        padding-left: 5px;
-
-                        img {
-                            margin-right: 5px;
-                        }
-                    }
-      
-                    .dropdown-toggle {
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        font-family: 'Geomanist-regular-book';
-
-                        img {
-                            margin-right: 5px;
-                        }
-                    }
-      
-                    .submenu {
-                        display: none;
-                        position: absolute;
-                        top: 23px;
-                        left: 0;
-                        background: white;
-                        padding: 10px;
-                        border-radius: 16px;
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                        z-index: 1000;
-                        width: 200px;
-        
-                        li {
-                            display: flex;
-                            align-items: center;
-                            gap: 10px;
-                            font-size: 14px;
-                            color: #000;
-                            padding: 5px 10px;
-                            cursor: pointer;
-                            font-weight: 400;
-                            font-family: 'Geomanist-regular-book';
-        
-                            &:hover {
-                                background-color: var(--chakra-colors-acimaDefault-2);
-                                border-radius: 8px;
-
-                                a {
-                                    color: var(--color-white);
-                                }
-                            }
-
-                            .flag-icon {
-                                width: 20px;
-                                height: auto;
-                            }
-        
-                            a {
-                                text-decoration: none;
-                                color: #000;
-                                font-weight: 400;
-                                font-family: 'Geomanist-regular-book';
-        
-                                &:hover {
-                                    color: var(--color-white);
-                                }
-
-                                > img {
-                                    margin-right: 6px;
-                                }
-                            }
-                        }
-                    }
-      
-                    &:hover .submenu {
-                        display: block;
-                    }
-
-                    &.language-dropdown {
-                        .submenu {
-                            li img {
-                                display: inline-block;
-                                vertical-align: middle;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    &.special-header {
-        .menu-hw,
-        .menu-get-app {
-            display: none !important;
-        }
-    }
-
-    
-    .mobile-nav .chakra-link:hover {
-        opacity: 0.5;
-    }
-
-    .mobile-nav .active {
-        opacity: 1 !important;
-    }
-
-}
-.mobile-menu {
-    .menu-hamburger-icon{
-        width: 44px;
-        margin-left: 10px;
 
         svg {
-            width: auto;
-            height: 27px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
         }
     }
 }
 
 .mobile-menu-drawer {
-    .menu-bar {
-        .menu-list {
-            list-style: none;
-            margin: 0;
-            padding: 0 20px;
-
-            li {
-                position: relative;
-                padding: 8px 0;
-                margin-bottom: 16px;
-                font-family: 'Geomanist-regular-book';
-                font-weight: 400;
-
-                &.btn-app {
-                    padding: 0;
-                }
-
-                .menu-check {
-                    position: absolute;
-                    opacity: 0;
-                    top: 14px;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    z-index: 2;
-                }
-
-                a, label {
-                    color: var(--chakra-colors-acimaDefault-4);
-                    display: block;
-                    font-size: 16px;
-                    font-family: 'Geomanist-regular-book';
-                    font-weight: 400;
-
-                    svg {
-                        display: inline-block;
-
-                        path {
-                            fill: var(--chakra-colors-acimaDefault-4);
-                        }
-                    }
-                }
-
-                label {
-                    &::after {
-                        content: '';
-                        display: block;
-                        width: 12px;
-                        height: 12px;
-                        background: url(../img/chevron-down-thick-blue.svg) no-repeat 0 0;
-                        margin-left: 5px;
-                        display: inline-block;
-                    }
-                }
-
-                .dropdown-toggle {
-                    display: flex;
-                    align-items: center;
-                    
-                    img {
-                        margin-right: 5px;
-                    }
-
-                    .dropdown-indicator {
-                        margin-left: 5px;
-
-                        svg {
-                            path {
-                                fill: var(--chakra-colors-acimaDefault-4);
-                            }
-                        }
-                    }
-                }
-
-                .submenu {
-                    background: var(--chakra-colors-acimaDefault-5);
-                    padding: 16px 24px 16px;
-                    border-radius: 16px;
-                    list-style: none;
-                    margin: 0;
-                    display: none;
-                    transition: all 0.3s ease-in-out;
-
-                    &.open {
-                        display: block;
-                    }
-
-                    li {
-                        padding: 12px 0;
-                        margin-bottom: 4px;
-
-                        a {
-                            color: var(--chakra-colors-acimaDefault-4);
-                            display: block;
-                            font-size: 16px;
-                            font-family: 'Geomanist-regular-book';
-                            font-weight: 400;
-                        }
-
-                        img {
-                            display: inline-block;
-                            vertical-align: middle;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .chakra-modal__header {
-        box-shadow: 0 0 0 !important;
-        font-size: 24px !important;
-        font-weight: 700 !important;
-        padding-left: 36px;
-        padding-top: 60px;
-    }
-
-    .chakra-modal__close-btn {
-        top: 71px !important;
-        background: transparent !important;
-        right: 40px;
-        
+    .brand-logo-wrapper {
         svg {
-            width: 16px;
-            height: 16px;
-            color: #050044;
-        }
-    }
-
-    .get-app-btn {
-        @include media-max(lg) {
-            display: flex;
-            width: 100%;
-        }
-
-        .primary-btn {
             height: auto;
-            padding: 13.4px 21px !important;
-
-            &:hover {
-                text-decoration: none;
-            }
-        }
-    }
-}
-
-.mobileLeftMenu {
-  .menu-list {
-    .hide-desktop.menu-item:last-child {
-      display: none!important;
-    }
-  }
-}
-
-@include media-max(md) {
-    .menu-item input[type="checkbox"]:checked + .menu-link + .submenu {
-        display: block !important;
-        margin-top: 15px;
-        z-index: 1000;
-        position: relative;
-    }
-}
-
-.menu-item input[type="checkbox"]:checked + .menu-link {
-    &::after {
-        content: '';
-        display: block;
-        width: 12px;
-        height: 12px;
-        background: url(../img/chevron-up-thick-blue.svg) no-repeat 0 0;
-        margin-left: 5px;
-        display: inline-block;
-    }
-}
-
-.menu-list input[type="checkbox"]:not(:checked) ~ .menu-item .submenu {
-    display: none !important;
-}
-
-.header-search .chakra-input__left-element {
-    .chakra-icon {
-        color: var(--color-white) !important;
-        fill: var(--color-white) !important;
-    }
-}
-
-.hide-desktop {
-    display: none !important;
-
-    @include media-max(md) {
-        display: block !important;
-    }
-}
-
-.hide-mob {
-    display: block !important;
-
-    @include media-max(md) {
-        display: none !important;
-    }
-}
-
-.geo-location-modal-btn {
-    &.location-btn-hide {
-        display: none !important;
-    }
-
-    button.geolocation-button {
-        font-family: 'Geomanist-regular-book' !important;
-        font-weight: 400 !important;
-        font-size: 16px;
-
-        .chakra-text {
-            font-size: 16px;
-            font-family: 'Geomanist-regular-book' !important;
-            font-weight: 400 !important;
-        }
-
-        @include media-max(md) {
-            margin-left: -28px;
-            height: 20px;
-            margin-top: 12px;
-        }
-    
-        svg {
-            width: 16px;
-            margin-right: 4px;
-
-            @include media-max(md) {
-                margin-right: 8px;
-            }
-        }
-    }
-}
-
-.use-my-location-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    padding-top: 22px;
-    padding-bottom: 22px;
-    text-decoration: none !important;
-    svg {
-        width: 16px;
-        height: 16px;
-        margin-right: 4px;
-    }
-}
-
-.locale-selector {
-    position: relative;
-    display: inline-block;
-
-    @include media-max(lg) {
-        display: block;
-        padding: 0 20px;
-    }
-
-    .locale-button {
-        display: flex;
-        align-items: center;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        border-radius: 0;
-        gap: 6px;
-        text-decoration: none;
-        color: white;
-        font-weight: 400;
-        font-family: 'Geomanist-regular-book';
-
-        @include media-max(lg) {
-            color: var(--chakra-colors-acimaDefault-4);
-            width: 100%;
         }
     }
 
-    .chevron {
-        transition: transform 0.3s;
-    }
+    .chakra-accordion {
+        .chakra-accordion__item {
+            h2 {
+                margin-bottom: 0;
 
-    .chevron.open {
-        @include media-max(md) {
-            transform: rotate(180deg);
-        }
-    }
-
-    .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 16px;
-        margin-top: 0;
-        z-index: 10;
-        min-width: 140px;
-        padding: 12px;
-
-        @include media-max(lg) {
-            background: var(--chakra-colors-acimaDefault-5);
-            position: relative;
-            top: 0;
-            margin-top: 15px;
-            padding: 16px 24px 16px;
-            border-radius: 16px;
-            width: 100%;
-            box-shadow: 0 0 0;
-        }
-    }
-
-    .dropdown-item {
-        display: flex;
-        align-items: center;
-        padding: 6px 8px;
-        border-radius: 8px;
-        cursor: pointer;
-        gap: 8px;
-        color: var(--chakra-colors-acimaDefault-4);
-        font-size: 16px;
-        font-family: 'Geomanist-regular-book';
-        font-weight: 400;
-
-        @include media-max(md) {
-            color: var(--chakra-colors-acimaDefault-4)
-        }
-
-        &:first-child {
-            margin-bottom: 7px;
-        }
-
-        &.selected {
-            background: var(--chakra-colors-acimaDefault-2);
-            color: white;
-    
-            @include media-max(md) {
-                background: transparent;
-                color: var(--chakra-colors-acimaDefault-4)
+                p {
+                    font-size: 14px;
+                    font-family: $fontGeomanistMedium;
+                    font-weight: 500;
+                    line-height: 1;
+                }
             }
         }
     }
 
-    .dropdown-item:hover {
-        background: var(--chakra-colors-acimaDefault-2);
-        color: white;
-
-        @include media-max(md) {
-            background: transparent;
-            color: var(--chakra-colors-acimaDefault-4)
-        }
-    }
-}
-
-.left-nav-links{
-    outline-color: transparent !important; 
-}
-
-/**Referral Header **/
-.referral-promo-wrapper {
-    background: #e3f5fB;
-    padding: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 51px;
-    margin-bottom: -12px;
-    margin-top: 12px;
-
-    @include media-max(md) {
-        margin-bottom: -24px;
-        margin-top: 24px;
-    }
-
-    .rich-text-editor {
-        font-size: 14px;
-        line-height: 16px;
-        font-weight: 400;
-        font-family: $fontGeomanistBook;
-        text-align: center;
-        color: #1e5b8e;
-
+    .acount-menus-wrapper {
         p {
-            font-size: inherit;
+            font-size: 14px;
+            font-family: $fontGeomanistMedium;
+            font-weight: 500;
+            line-height: 1;
         }
     }
 }

@@ -22,8 +22,8 @@ export default {
             paddingRight: [4]
         },
         topHeaderContent: {
-            color: 'white',
-            backgroundColor: 'acimaDefault.4'
+            color: '#181818',
+            backgroundColor: 'rcDefault.4'
         },
         topContentContainer: {
             maxWidth: 'container.xxl',
