@@ -54,7 +54,7 @@ export default {
             marginLeft: 3,
             fontSize: 'md',
             fontWeight: 700,
-            color: '#fff',
+            color: 'gray.900',
             _hover: {
                 textDecoration: 'none'
             }

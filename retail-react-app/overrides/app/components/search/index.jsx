@@ -106,12 +106,12 @@ function Search() {
 
     return (
         <Box className={autocompleteClassName}>
-            <form {...getFormProps()} className="search-input" onChange={handleInputChange}>
+            <form {...getFormProps()} className="search-container" onChange={handleInputChange}>
                 <label {...getLabelProps()} hidden>
                     Search
                 </label>
                 <SearchIcon className="search-icon" />
-                <Input
+                <Input className='search-input'
                     {...getInputProps()}
                     onKeyDown={(e) => {
                         let searchContainerElement =
