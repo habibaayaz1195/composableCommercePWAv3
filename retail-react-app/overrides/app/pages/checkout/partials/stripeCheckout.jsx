@@ -31,54 +31,61 @@ const CheckoutForm = (props) => {
   const navigate = useNavigation()
 
 
-  const submitOrder = async () => {
-    try {
-      setIsLoading(true)
+   const submitOrder = async () => {
+  try {
+    setIsLoading(true);
 
-      if (!stripe) {
-        throw("")
-      }
-
-
-      const { error: submitError } = await elements.submit();
-      if (submitError) {
-        handleError(submitError);
-      }
-
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
-        elements
-      });
-
-      if (error) {
-        throw("")
-      }
-
-      const order = await props.submitOrder()
-
-      // Create the PaymentIntent
-      await axios.post(`${getAppOrigin()}/create-confirm-intent`, {
-        paymentMethodId: paymentMethod.id,
-        order: order
-      }).then((res) => {
-        console.log(res.data);
-        if (res.data.status == 'succeeded') {
-          navigate(`checkout/confirmation/${order.orderNo}`)
-        }
-      }).catch((err) => {
-        console.log(err)
-      });
-       
-    } catch (error) {
-      const message = formatMessage({
-        id: 'checkout.message.generic_error',
-        defaultMessage: 'An unexpected error occurred during checkout.'
-      })
-      setError(message)
-    } finally {
-      setIsLoading(false)
-
+    if (!stripe || !elements) {
+      throw new Error("Stripe.js has not loaded yet");
     }
+
+    // Validate form inputs first
+    const { error: submitError } = await elements.submit();
+    if (submitError) {
+      handleError(submitError);
+      return;
+    }
+
+    // 1 Create order in SFCC (your existing flow)
+    const order = await props.submitOrder();
+
+    // Call backend to create PaymentIntent
+    const { data } = await axios.post(`${getAppOrigin()}/create-confirm-intent`, {
+      order
+    });
+   console.log("url", data)
+    if (!data || !data.client_secret) {
+      throw new Error("Missing client_secret from backend");
+    }
+
+    // Confirm payment using PaymentElement
+    const { error, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      clientSecret: data.client_secret,
+      confirmParams: {
+        return_url: `${getAppOrigin()}/checkout/confirmation/${order.orderNo}`,
+      },
+    });
+console.log(paymentIntent,"paymentIntent")
+    if (error) {
+      console.error("Payment failed:", error.message);
+      handleError(error);
+    } else if (paymentIntent?.status === "succeeded") {
+      navigate(`checkout/confirmation/${order.orderNo}`);
+    }
+
+  } catch (error) {
+    console.error("Checkout error:", error);
+    const message = formatMessage({
+      id: 'checkout.message.generic_error',
+      defaultMessage: 'An unexpected error occurred during checkout.'
+    });
+    setError(message);
+  } finally {
+    setIsLoading(false);
   }
+};
+
 
   return (
     <div>
@@ -106,9 +113,8 @@ const CheckoutForm = (props) => {
     </div>
   );
 };
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51NQqygFOWeiILMiFvEfdoO9TAP1hgKuk0avfuHrKrnhht53B8KZTJ73Rzkv4OcCGlIb6ATLb4A4GjVHQQbPVRgQE00cJOtolRd";
+const STRIPE_PUBLISHABLE_KEY = "pk_test_51SCmKoAfz7mr8QpOYt4fdFEVdwEYjZrRjYk6n4AVrIoo02qzBaH1JRwQ2p9hPouyRLsP2r0qbdWWYM3PxdXsXQw000okRbYcdv";
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
-
 const StripeCheckout = (props) => {
 
 

@@ -16,20 +16,20 @@ import helmet from 'helmet'
 const bodyParser = require('body-parser')
 const express = require('express')
 
-const STRIPE_SECRET_KEY = "sk_test_51NQqygFOWeiILMiF3dXbUCshWVDvYyR8K066dnKXaW54UdlFsW9h8IrY70qwkjLN7AbnDAK00zDoDJSdAwZIVpDa00woYA4IZf";
+const STRIPE_SECRET_KEY = "sk_test_51SCmKoAfz7mr8QpOe4cLDti6plGyYFu33SsiPqQ52v7AuifkvKBCqmo5umjY0WkOxDI8KYUUJvt1Peb7Mb5oLngm00O1QWg0tn";
 const stripe = require('stripe')(STRIPE_SECRET_KEY);
 
-const STRIPE_WEBHOOK_SECRET = 'whsec_QvL8db4936MtaFXFaoqRO6wXp44sXf5L'
+const STRIPE_WEBHOOK_SECRET =  'whsec_ixIs6EdFKCApCDd9OFxFMwvYcjGYYhn6'
 
 
 //Admin APIs
-const SFCC_OAUTH_CLIENT_ID = '7590d328-8851-42e1-9f78-40124fb22daf';
-const SFCC_OAUTH_CLIENT_SECRET = 'Cyber@June23';
+const SFCC_OAUTH_CLIENT_ID = '5df052e1-adbe-4d6e-963f-4f1b4f0124ad';
+const SFCC_OAUTH_CLIENT_SECRET = 'WaterMelon@2023';
 
 const SFCC_CREDENTIALS = `${SFCC_OAUTH_CLIENT_ID}:${SFCC_OAUTH_CLIENT_SECRET}`;
 
 const SFCC_REALM_ID = 'zzkc';
-const SFCC_INSTANCE_ID = '009';
+const SFCC_INSTANCE_ID = '006';
 
 const SFCC_OAUTH_SCOPES = 'sfcc.orders sfcc.orders.rw';
 
@@ -97,30 +97,25 @@ const {handler} = runtime.createHandler(options, (app) => {
 
      // Custom Code - starts
 
-     app.post('/create-confirm-intent',bodyParser.json(), async (req, res) => {
-        try {
-            const intent = await stripe.paymentIntents.create({
-                confirm: true,
-                amount: Math.round(req.body.order.orderTotal * 100),
-                currency: req.body.order.currency,
-                automatic_payment_methods: { enabled: true },
-                payment_method: req.body.paymentMethodId, 
-                return_url: `${req.get('origin')}/checkout/confirmation/${req.body.order.orderNo}`,
-                use_stripe_sdk: true,
-                metadata: {
-                    orderNo: req.body.order.orderNo,
-                    paymentInstrumentId: req.body.order.paymentInstruments[0].paymentInstrumentId
-                }
-            });
-            res.json({
-                status: intent.status
-            });
-        } catch (err) {
-            res.json({
-                error: err
-            })
-        }
+     app.post('/create-confirm-intent', bodyParser.json(), async (req, res) => {
+  try {
+    const { order } = req.body;
+
+    const intent = await stripe.paymentIntents.create({
+      amount: Math.round(order.orderTotal * 100),
+      currency: order.currency || 'usd',
+      automatic_payment_methods: { enabled: true },
+      metadata: {
+        orderNo: order.orderNo,
+      },
     });
+
+    res.json({ client_secret: intent.client_secret });
+  } catch (err) {
+    console.error("Stripe error:", err);
+    res.status(400).json({ error: err.message });
+  }
+});
 
 
     app.post("/stripe-webhook", bodyParser.json({

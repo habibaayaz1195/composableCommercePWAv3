@@ -117,7 +117,7 @@ const Payment = () => {
         const { addressId, creationDate, lastModified, preferred, ...address } = billingAddress
         return updateBillingAddressForBasket({
             body: address,
-            parameters: { basketId: basket.basketId, shipmentId: 'me' }
+            parameters: { basketId: basket.basketId }
         })
     }
     const onPaymentRemoval = async () => {
