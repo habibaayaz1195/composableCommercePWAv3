@@ -34,6 +34,13 @@ const AboutUsContentful = () => {
 
     getFeaturedCategories();
 
+    //Getting Slider
+    async function getSlider() {
+        const slider = await client.getEntry("1TNV3uzW9EtyPkK8VgDU2e");
+        console.log('Slider', slider);
+    }
+    getSlider();
+    
     //const spaceid = "rb9ez79izqmr"
     //const access_token = "WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o"
     const { isLoading, error, data } = useQuery({ 
