@@ -152,9 +152,7 @@ export const Carousel = (props = {}) => {
                             width={itemWidth}
                             style={{scrollSnapAlign: 'start'}}
                         >
-                            <AspectRatio ratio={0.75}>
-                                <Component component={component} />
-                            </AspectRatio>
+                            <Box><Component component={component} /></Box>
                         </Box>
                     ))}
                 </Stack>
@@ -168,6 +166,7 @@ export const Carousel = (props = {}) => {
                     top="50%"
                     left={{base: 1, lg: 4}}
                     transform="translateY(-50%)"
+                    className='carousel-btn-prev'
                 >
                     {/* boxShadow requires !important --> https://github.com/chakra-ui/chakra-ui/issues/3553 */}
                     <IconButton
@@ -187,6 +186,7 @@ export const Carousel = (props = {}) => {
                     top="50%"
                     right={{base: 1, lg: 4}}
                     transform="translateY(-50%)"
+                    className='carousel-btn-next'
                 >
                     {/* boxShadow requires !important --> https://github.com/chakra-ui/chakra-ui/issues/3553 */}
                     <IconButton

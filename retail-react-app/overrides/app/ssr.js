@@ -74,13 +74,55 @@ const {handler} = runtime.createHandler(options, (app) => {
         helmet({
             contentSecurityPolicy: {
                 useDefaults: true,
-                directives: {
+                /*directives: {
                     'img-src': ["'self'", '*.commercecloud.salesforce.com', 'data:', 's7d1.scene7.com','images.ctfassets.net','storage.googleapis.com', 'www.target.com.au'],
                     'script-src': ["'self'", "'unsafe-eval'", 'storage.googleapis.com',
                         'js.stripe.com'],
-                    'connect-src': ["'self'", 'api.cquotient.com', 'api.stripe.com', 'ac.cnstrc.com'],
+                    'connect-src': ["'self'", 'api.cquotient.com', 'api.stripe.com', 'ac.cnstrc.com', 'cdn.contentful.com', 'preview.contentful.com'],
                     'frame-src': ['js.stripe.com', 'hooks.stripe.com'],
+                }*/
+                directives: {
+                    'default-src': ["'self'"],
+                    'img-src': [
+                        "'self'",
+                        '*.commercecloud.salesforce.com',
+                        'data:',
+                        'blob:',
+                        's7d1.scene7.com',
+                        'images.ctfassets.net',
+                        'storage.googleapis.com',
+                        'www.target.com.au'
+                    ],
+                    'script-src': [
+                        "'self'",
+                        "'unsafe-inline'",
+                        "'unsafe-eval'",
+                        'storage.googleapis.com',
+                        'js.stripe.com'
+                    ],
+                    'connect-src': [
+                        "'self'",
+                        'api.cquotient.com',
+                        'api.stripe.com',
+                        'ac.cnstrc.com',
+                        'cdn.contentful.com',
+                        'preview.contentful.com',
+                        'images.ctfassets.net'
+                    ],
+                    'frame-src': [
+                        'js.stripe.com',
+                        'hooks.stripe.com'
+                    ],
+                    'style-src': [
+                        "'self'",
+                        "'unsafe-inline'"
+                    ],
+                    'font-src': [
+                        "'self'",
+                        'data:'
+                    ]
                 }
+
             }
         })
     )

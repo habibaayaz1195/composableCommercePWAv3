@@ -13,9 +13,9 @@ export default {
             padding: '12px',
             borderRadius: '12px',
             _checked: {
-                borderColor: 'acimaDefault.4',
+                borderColor: 'rcDefault.4',
                 _hover: {
-                    borderColor: 'acimaDefault.4'
+                    borderColor: 'rcDefault.4'
                 }
             }
         },
@@ -26,10 +26,10 @@ export default {
         control: {
             backgroundColor: 'white',
             _checked: {
-                backgroundColor: 'acimaDefault.4',
-                borderColor: 'acimaDefault.4',
+                backgroundColor: 'rcDefault.4',
+                borderColor: 'rcDefault.4',
                 _hover: {
-                    borderColor: 'acimaDefault.4'
+                    borderColor: 'rcDefault.4'
                 }
             },
             _indeterminate: {}

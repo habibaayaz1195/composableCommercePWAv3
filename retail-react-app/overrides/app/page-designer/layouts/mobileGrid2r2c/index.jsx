@@ -6,7 +6,7 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import {SimpleGrid} from '@chakra-ui/react'
+import {Box, SimpleGrid} from '@salesforce/retail-react-app/app/components/shared/ui'
 import {Region, regionPropType} from '@salesforce/commerce-sdk-react/components'
 
 /**
@@ -19,12 +19,16 @@ import {Region, regionPropType} from '@salesforce/commerce-sdk-react/components'
  * @param {string} props.typeId - A mapping of typeId's to react components representing the type.
  * @returns {React.ReactElement} - Grid component.
  */
-export const MobileGrid2r2c = ({regions}) => (
-    <SimpleGrid className="mobile-2r-2c" columns={{base: 2, sm: 4}} gridGap={4}>
-        {regions.map((region) => (
-            <Region key={region.id} region={region} />
-        ))}
-    </SimpleGrid>
+export const MobileGrid2r2c = ({regions, sectionClassCol1}) => (
+    <Box className={`section-wrapper ${sectionClassCol1 ? sectionClassCol1 : ''}`}>
+        <Box className='section-container' w="100%" mx='auto' maxW="1200px">
+            <SimpleGrid className="mobile-2r-2c" columns={{base: 2, sm: 4}} gridGap={4}>
+                {regions.map((region) => (
+                    <Region key={region.id} region={region} />
+                ))}
+            </SimpleGrid>
+        </Box>
+    </Box>
 )
 
 MobileGrid2r2c.displayName = 'MobileGrid2r2c'

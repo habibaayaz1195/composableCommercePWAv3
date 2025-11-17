@@ -1,0 +1,334 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.main-banner-wrapper {
+    .section-container  {
+        max-width: 100%;
+
+        @include media-max(md) {
+            padding-left: 24px;
+        }
+    }
+
+    .carousel-container-items {
+        gap: 72px;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+
+        @include media-max(md) {
+            padding-right: 24px;
+            gap: 24px;
+        }
+
+        .carousel-slide-item {
+            flex-basis: 100%;
+            flex-shrink: 0;
+            scroll-snap-align: start !important;
+            margin: 0;
+            max-width: 1200px;
+
+            @include media-max(md) {
+                flex-basis: 90%;
+            }
+        }
+    }
+
+    .carouselFrame {
+        height: 24px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        width: auto;
+        bottom: 42px;
+        transform: translate(0, 0);
+        left: 0;
+        right: 0;
+
+        @include media-max(md) {
+            bottom: 32px;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .activeFrameBtn {
+        width: 24px;
+        height: 8px;
+        background: $white !important;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background: $white !important;
+        }
+    }
+
+    .frameBtn {
+        min-width: 8px;
+        border-radius: 100px;
+        opacity: 0.7;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.3);
+        border-color: transparent;
+        padding: 0;
+    }
+
+    .carousel {
+        padding: 0;
+    }
+}
+
+.carousel-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+
+    button {
+        background: transparent;
+        padding: 0;
+        z-index: 1000;
+        min-width: 48px;
+        height: 48px;
+
+        &.btn-prev {
+            left: -56px;
+        }
+
+        &.btn-next {
+            right: -56px;
+        }
+
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+.banner-content-wrapper {
+    padding: 4px 0 0;
+
+    @include media-max(md) {
+        padding: 0;
+    }
+
+    .fig-banner-content {
+
+        @include media-max(md) {
+            padding: 0;
+        }
+
+        .image-wrapper {
+            position: relative;
+            max-height: 600px;
+
+            img {
+                width: 100%;
+                max-height: inherit;
+                border-radius: 0;
+
+                @media(max-width: 575px) {
+                    height: 393px;
+                    object-fit: cover;
+                    max-height: 939px;
+                }
+            }
+
+            .img-overlay {
+                &::before {
+                    content: '';
+                    background: linear-gradient(
+                        133.07deg,
+                        rgba(0, 0, 0, 0.72) -6.76%,
+                        rgba(0, 0, 0, 0) 76.66%
+                    );
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0;
+                    max-width: 1200px;
+                }
+            }
+        }
+
+        .fig-banner-caption {
+            position: absolute;
+            left: 72px;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 637px;
+            min-height: 300px;
+
+            @include media-max(md) {
+                max-width: 100%;
+                left: 0;
+                padding: 0 24px;
+                display: flex;
+                flex-direction: column;
+                min-height: 100px;
+            }
+
+            .banner-inner-text {
+                @include media-max(md){
+                    flex: 1;
+                    max-height: 100%;
+                }                
+            }
+            h1,h2 {
+                font-size: 64px;
+                line-height: 84px;
+                font-weight: 700;
+                color: $white;
+                margin-bottom: 32px;
+
+                @include media-max(lg) {
+                    font-size: 40px;
+                    line-height: 44px;
+                }
+
+                @include media-max(md) {
+                    margin-bottom: 32px;
+                    font-size: 40px;
+                    line-height: 44px;
+                    max-width: 100%;
+                }
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 24px;
+                font-weight: 400;
+                color: $white;
+                margin-bottom: 48px;
+                max-width: 500px;
+
+                @include media-max(lg) {
+                    font-size: 18px;
+                    line-height: 24px;
+                    max-width: 550px;
+                    margin-bottom: 32px;
+                }
+
+                @include media-max(md) {
+                    font-size: 14px;
+                    line-height: 18px;
+                    max-width: 100%;
+                    height: 100%;
+                    max-height: 50%;
+                }
+            }
+
+            .btn-shop {
+                min-height: 60px;
+                font-size: 14px;
+                letter-spacing: 0.05em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                min-width: 157px;
+                
+                @include media-max(sm) {
+                    &.font-12 {
+                        font-size: 12px;
+                    }
+                }
+
+                &:hover {
+                    background: var(--chakra-colors-rcDefault-10) !important;
+                }
+            
+                &:focus {
+                    background: var(--chakra-colors-rcDefault-6) !important;
+                    outline: 3px solid var(--chakra-colors-rcDefault-12) !important;
+                }
+            
+                &:active {
+                    background: var(--chakra-colors-rcDefault-11) !important;
+                }
+            
+                &.disabled {
+                    background: var(--chakra-colors-rcDefault-12) !important;
+                    cursor: not-allowed !important;
+                }
+            }
+            .btn-shop:hover {
+                background-color: #FF6215 !important;                
+            }
+            .btn-shop:active {
+                background-color: #DE4A00 !important;                
+            }
+
+            @include media-max(md) {
+                min-width: 125px;
+            }
+
+            h4 {
+                color: #fff;
+                text-align: right;
+                text-transform: uppercase;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    background: #de4a00;
+                    width: 30%;
+                    height: 1px;
+                    display: block;
+                    text-align: right;
+                    right: 0;
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.parallax-banner {
+    .banner-content-wrapper .fig-banner-content {
+        .image-wrapper .img-overlay::before {
+            max-width: 100%;
+        }
+
+        .fig-banner-caption {
+            min-height: inherit;
+            right: 0;
+            left: 0;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+
+            h2 {
+                font-size: 40px;
+                line-height: 48px;
+            }
+
+            p {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .btn-shop {
+                max-width: 200px;
+                width: 100%;
+                margin: 40px auto 0;
+                border-radius: 30px;
+            }
+        }
+    }
+}
+
+.carousel {
+    .carousel-btn-prev {
+        left: 20px;
+    }
+
+    .carousel-btn-next {
+        right: 20px;
+    }
+}

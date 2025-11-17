@@ -3,7 +3,20 @@ import {useParams} from 'react-router-dom'
 import {Box} from '@chakra-ui/react'
 import {usePage} from '@salesforce/commerce-sdk-react'
 import {Page} from '@salesforce/commerce-sdk-react/components'
-import {ImageTile, ImageWithText, ProductTile, TextBox} from '../../page-designer/assets'
+import { 
+    ImageTile, 
+    ImageWithText, 
+    ProductTile, 
+    RichTextBox, 
+    EditorialRichText, 
+    MainBannerWithContent,
+    linkButton,
+    TextHeading,
+    VerticalContentTile,
+    HorizontalContentTile,
+    CollapsibleItem,
+    PDPlusContentAsset
+} from '../../page-designer/assets'
 import {
     Carousel,
     MobileGrid1r1c,
@@ -11,7 +24,9 @@ import {
     MobileGrid2r2c,
     MobileGrid2r3c,
     MobileGrid3r1c,
-    MobileGrid3r2c
+    MobileGrid3r2c,
+    MobileGridFlexi3r2c,
+    CollapsibleLayout
 } from '../../page-designer/layouts'
 
 import {HTTPError, HTTPNotFound} from '@salesforce/pwa-kit-react-sdk/ssr/universal/errors'
@@ -20,15 +35,25 @@ import Storefronts from '../storefronts'
 const PAGEDESIGNER_TO_COMPONENT = {
     'commerce_assets.photoTile': ImageTile,
     'commerce_assets.imageAndText': ImageWithText,
+    'commerce_assets.mainBannerWithContent': MainBannerWithContent,
     'commerce_layouts.carousel': Carousel,
-    'commerce_assets.productTile' : ProductTile,
-    'commerce_assets.editorialRichText' :TextBox,
+    'commerce_assets.productTile': ProductTile,
+    'commerce_assets.editorialRichText': RichTextBox,
+    'commerce_assets.editorialRichText': EditorialRichText,
     'commerce_layouts.mobileGrid1r1c': MobileGrid1r1c,
     'commerce_layouts.mobileGrid2r1c': MobileGrid2r1c,
     'commerce_layouts.mobileGrid2r2c': MobileGrid2r2c,
     'commerce_layouts.mobileGrid2r3c': MobileGrid2r3c,
     'commerce_layouts.mobileGrid3r1c': MobileGrid3r1c,
-    'commerce_layouts.mobileGrid3r2c': MobileGrid3r2c
+    'commerce_layouts.mobileGrid3r2c': MobileGrid3r2c,
+    'commerce_layouts.mobileGridFlexi3r2c': MobileGridFlexi3r2c,
+    'commerce_assets.linkbutton': linkButton,
+    'commerce_assets.textHeader': TextHeading,
+    'commerce_assets.verticalContentTile': VerticalContentTile,
+    'commerce_assets.horizontalContentTile': HorizontalContentTile,
+    'pd_layouts.pdPlusAccordionLayout': CollapsibleLayout,
+    'pd_assets.pdPlusAccordion': CollapsibleItem,
+    'pd_assets.pdPlusContentAsset': PDPlusContentAsset
 }
 //console.log(PAGEDESIGNER_TO_COMPONENT)
 const PageViewer = () => {
@@ -41,7 +66,7 @@ const PageViewer = () => {
     }
 
     return (
-        <Box layerStyle={'page'}>
+        <Box className='page-wrapper'>
             <Page page={page} components={PAGEDESIGNER_TO_COMPONENT} />
             <Storefronts/>
         </Box>

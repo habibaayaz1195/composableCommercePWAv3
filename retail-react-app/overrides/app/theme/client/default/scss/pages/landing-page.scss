@@ -1,0 +1,322 @@
+@use '../skin/skinVariables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+/**Landing Page Styles**/
+
+.col-text-wrapper {
+    .section-container {
+        max-width: 1400px;
+    }
+
+    .inner-content-wrapper {
+        h4 {
+            font-size: 40px;
+            margin-bottom: 24px;
+        }
+
+        ul {
+            margin-bottom: 24px;
+            list-style: none;
+
+            li {
+                font-size: 16px;
+                line-height: 28px;
+            }
+        }
+    }
+
+        .chakra-button {
+            background-color: $rc-orange-2;
+            border-radius: 30px;
+        }
+}
+
+.two-col-content-wrapper {
+    padding: 60px 0;
+
+    .section-container {
+        max-width: 1400px;
+    }
+
+    .textHeader {
+        padding: 0;
+        max-width: 100%;
+        text-align: center;
+        font-size: 40px;
+
+        .heading-inner {
+            padding: 0;
+
+            h4 {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.text-heading-wrapper {
+    padding-bottom: 60px;
+
+    .text-editor-content {
+        text-align: center;
+
+        h2 {
+            font-size: 60px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.our-blog-strip {
+    background: #B9E6F5;
+    padding: 29px 0;
+
+    .section-container {
+
+    }
+
+    .textHeader {
+        padding: 0;
+        margin: 0;
+        border-bottom: 0;
+
+        .heading-inner {
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+
+            @include media-max(md) {
+                display: block;
+                text-align: center;
+                padding: 0 24px;
+            }
+
+            h4 {
+                margin: 0 24px 0 0;
+                font-size: 20px;
+                font-family: $fontGeomanistRegular;
+                color: $rc-blue-4;
+                
+
+                @include media-max(md) {
+                    margin: 0 0 24px 0;
+                }
+            }
+
+            .chakra-link.headerLink,
+            .chakra-button.headerLink {
+                font-size: 14px;
+                color: var(--chakra-colors-rcDefault-4);
+                background: white;
+                border-radius: 30px;
+                text-align: center;
+                padding: 12.5px 25px;
+                font-family: $fontGeomanistMedium;
+                font-size: 14px;
+                cursor: pointer;
+                
+
+                &:hover {
+                    background: #B9DDFF;
+                    text-decoration: none;
+                }
+
+                &:focus {
+                    outline: 3px solid #2CA1FF;
+                    background: #B9DDFF;
+                    text-decoration: none;
+                }
+
+                &:active {
+                    background: #2CA1FF;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+
+.mobile-app-section {
+    background: linear-gradient(154.96deg, #F73A00 -51.78%, #FF6215 67.49%, #FFD8CA 159.33%);
+    padding: 120px 24px;
+    height: 100%;
+
+    @include media-max(md) {
+        padding: 72px 24px;
+    }
+
+    .section-container {
+        height: 100%;
+    }
+
+    .mobile-2r-1c  {
+        align-items: center;
+        height: 100%;
+        grid-gap: 96px;
+
+        @include media-max(lg) {
+            grid-gap: 60px;
+        }
+
+        @include media-max(md) {
+            grid-gap: 0;
+            grid-template-columns: 1fr;
+        }
+
+        .image-tile {
+            @include media-max(md) {
+                margin-bottom: 48px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .rich-text-editor {
+            .text-editor-content {
+                div {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-end;
+                    flex-direction: column;
+
+                    @include media-max(lg) {
+                        display: block;
+                    }
+                }
+            }
+
+            h2 {
+                font-size: 80px;
+                line-height: 84px;
+                letter-spacing: -0.02em;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 56px;
+
+                @include media-max(lg) {
+                    font-size: 60px;
+                    line-height: 64px;
+                }
+
+                @include media-max(md) {
+                    font-size: 40px;
+                    line-height: 44px;
+                    margin-bottom: 32px;
+                    text-align: center;
+                }
+            }
+
+            p {
+                font-size: 28px;
+                line-height: 36px;
+                letter-spacing: 0.013em;
+                font-weight: 400;
+                color: #fff;
+                margin-bottom: 56px;
+                width: 80%;
+
+                @include media-max(lg) {
+                    font-size: 22px;
+                    line-height: 28px;
+                    width: 100%;
+                }
+
+                @include media-max(md) {
+                    font-size: 16px;
+                    line-height: 20px;
+                    margin-bottom: 48px;
+                    letter-spacing: 0;
+                    font-family: $fontGeomanistBook;
+                }
+            }
+        }
+
+        #column1 {
+            max-width: 715px;
+            text-align: right;
+
+            @include media-max(md) {
+                text-align: left;
+            }
+        }
+    }
+
+    &.bg-white {
+        background: $grey12;
+
+        .mobile-app-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+        }
+
+        &.text-heading {
+            .textHeader {
+                .heading-inner {
+                    margin-bottom: 56px;
+                    justify-content: flex-end;
+                    text-align: right;
+                    padding: 0;
+
+                    @include media-max(md) {
+                        margin-bottom: 40px;
+                        justify-content: center;
+                        text-align: center;
+                    }
+
+                    h4 {
+                        font-size: 80px;
+                        line-height: 84px;
+                        letter-spacing: -1px;
+
+                        @include media-max(md) {
+                            font-size: 40px;
+                            line-height: 1;
+                            letter-spacing: normal;
+                        }
+                    }
+                }
+            }
+        }
+
+        .mobile-2r-1c  {
+            @include media-min(lg) {
+                padding-left: 6%;
+            }
+
+            .rich-text-editor {
+                h2 {
+                    color: $rc-blue-4;
+                }
+
+                p {
+                    color: $rc-blue-4;
+                    width: 100%;
+
+                    @include media-max(md) {
+                        color: $rc-light-gray-1;
+                    }
+                }
+            }
+
+            .image-tile-for-desktop {
+                display: block;
+
+                @include media-max(md) {
+                    display: none;
+                }
+            }
+
+            .image-tile-for-mobile {
+                display: none;
+
+                @include media-max(md) {
+                    display: block;
+                }
+            }
+        }
+    }
+}

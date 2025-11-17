@@ -26,7 +26,7 @@ $rc-blue-5: #b9e6f5 !default;
 $rc-blue-6: #2CA1FF !default;
 $rc-blue-7: #8bc8ff !default;
 $rc-gray-1: #f7f7f7 !default;
-$rc-orange: #f75200 !default;
+$rc-orange: #ff9900 !default;
 $rc-red: #ed1c24 !default;
 $rc-red-1: #cd2026 !default;
 $rc-red-2: #ffebee !default;
@@ -50,6 +50,7 @@ $grey8: #333 !default;
 $grey9: #c9c9c9 !default;
 $grey10: #9b9b9b !default;
 $grey11: #1d1d1d !default;
+$grey12: #f2f2f2 !default;
 $grey-transparent-1: rgba(0, 0, 0, 65%) !default;
 $grey-transparent-2: rgba(0, 0, 0, 25%) !default;
 $light-gray: $grey1 !default;
@@ -86,7 +87,6 @@ $fontGeomanistRegular: 'Geomanist-regular';
 $fontGeomanistBook: 'Geomanist-regular-book';
 $fontGeomanistMedium: 'Geomanist-medium';
 $fontGeomanistBold: 'Geomanist-bold';
-
 
 // Font sizes
 $base16-14px: 0.875em !default;
