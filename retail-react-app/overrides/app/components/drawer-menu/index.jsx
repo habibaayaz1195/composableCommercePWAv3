@@ -12,8 +12,7 @@ import {useIntl} from 'react-intl'
 // Project Components
 import LocaleSelector from '@salesforce/retail-react-app/app/components/locale-selector'
 import NestedAccordion from '@salesforce/retail-react-app/app/components/nested-accordion'
-import SocialIcons from '@salesforce/retail-react-app/app/components/social-icons'
-
+import SocialIcons from '../social-icons'
 // Components
 import {
     Box,
@@ -46,10 +45,10 @@ import Link from '@salesforce/retail-react-app/app/components/link'
 // Icons
 import {
     BrandLogo,
+    LocationIcon,
     SignoutIcon,
-    StoreIcon,
     UserIcon
-} from '@salesforce/retail-react-app/app/components/icons'
+} from '../icons'
 
 // Others
 import {noop} from '@salesforce/retail-react-app/app/utils/utils'
@@ -59,8 +58,6 @@ import LoadingSpinner from '@salesforce/retail-react-app/app/components/loading-
 import useNavigation from '@salesforce/retail-react-app/app/hooks/use-navigation'
 import useMultiSite from '@salesforce/retail-react-app/app/hooks/use-multi-site'
 
-import {STORE_LOCATOR_IS_ENABLED} from '@salesforce/retail-react-app/app/constants'
-import {getConfig} from '@salesforce/pwa-kit-runtime/utils/ssr-config'
 // The FONT_SIZES and FONT_WEIGHTS constants are used to control the styling for
 // the accordion buttons as their current depth. In the below definition we assign
 // values for depths 0 - 3, any depth deeper than that will use the default styling.
@@ -70,7 +67,7 @@ const PHONE_DRAWER_SIZE = 'xs'
 const TABLET_DRAWER_SIZE = 'lg'
 
 const DrawerSeparator = () => (
-    <Box paddingTop="6" paddingBottom="6">
+    <Box paddingTop="3" paddingBottom="3">
         <Divider />
     </Box>
 )
@@ -84,15 +81,8 @@ const STORE_LOCATOR_HREF = '/store-locator'
  * main usage is to navigate from one category to the next, but also homes links to
  * support, log in and out actions, as support links.
  */
-const DrawerMenu = ({
-    root,
-    itemsKey,
-    itemsCountKey,
-    isOpen,
-    onClose = noop,
-    onLogoClick = noop,
-    itemComponent
-}) => {
+const DrawerMenu = ({root, isOpen, onClose = noop, onLogoClick = noop}) => {
+    const itemsKey = 'categories'
     const intl = useIntl()
     const {isRegistered} = useCustomerType()
     const navigate = useNavigation()
@@ -101,7 +91,6 @@ const DrawerMenu = ({
     const socialIconVariant = useBreakpointValue({base: 'flex', md: 'flex-start'})
     const {site, buildUrl} = useMultiSite()
     const {l10n} = site
-    const storeLocatorEnabled = getConfig()?.app?.storeLocatorEnabled ?? STORE_LOCATOR_IS_ENABLED
     const [showLoading, setShowLoading] = useState(false)
     const [ariaBusy, setAriaBusy] = useState('true')
     const logout = useAuthHelper(AuthHelpers.Logout)
@@ -122,20 +111,14 @@ const DrawerMenu = ({
     return (
         <Drawer isOpen={isOpen} onClose={onClose} placement="left" size={drawerSize}>
             <DrawerOverlay>
-                <DrawerContent>
+                <DrawerContent className="mobile-menu-drawer">
                     {/* Header Content */}
-                    <DrawerHeader
-                        aria-label={intl.formatMessage({
-                            id: 'drawer_menu.header.assistive_msg.title',
-                            defaultMessage: 'Menu Drawer'
-                        })}
-                    >
-                        <IconButton
-                            icon={<BrandLogo {...styles.logo} />}
+                    <DrawerHeader>
+                        <IconButton className='brand-logo-wrapper'
+                            icon={<BrandLogo {...styles.logo}  className='brand-log'/>}
                             variant="unstyled"
                             onClick={onLogoClick}
                         />
-
                         <DrawerCloseButton />
                     </DrawerHeader>
 
@@ -143,6 +126,7 @@ const DrawerMenu = ({
                     <DrawerBody>
                         <div
                             id="category-nav"
+                            className='category-nav'
                             aria-live="polite"
                             aria-busy={ariaBusy}
                             aria-atomic="true"
@@ -152,10 +136,9 @@ const DrawerMenu = ({
                             {/* Category Navigation */}
                             {root?.[itemsKey] ? (
                                 <Fade in={true}>
-                                    <NestedAccordion
+                                    <NestedAccordion className="collapsible-inner"
                                         allowMultiple={true}
                                         item={root}
-                                        itemsCountKey={itemsCountKey}
                                         itemsKey={itemsKey}
                                         itemsFilter="c_showInMenu"
                                         fontSizes={FONT_SIZES}
@@ -163,14 +146,12 @@ const DrawerMenu = ({
                                         itemsBefore={({depth, item}) =>
                                             depth > 0 ? (
                                                 [
-                                                    <AccordionItem border="none" key="show-all">
-                                                        <AccordionButton
+                                                    <AccordionItem border="none" key="show-all" className='collapsible-item'>
+                                                        <AccordionButton className='collapsible-button'
                                                             paddingLeft={8}
                                                             as={Link}
                                                             to={categoryUrlBuilder(item)}
-                                                            fontSize={FONT_SIZES[depth]}
-                                                            fontWeight={FONT_WEIGHTS[depth]}
-                                                            color="black"
+                                                            color={'gray.900'}
                                                         >
                                                             {intl.formatMessage({
                                                                 id: 'drawer_menu.link.shop_all',
@@ -184,7 +165,6 @@ const DrawerMenu = ({
                                             )
                                         }
                                         urlBuilder={categoryUrlBuilder}
-                                        itemComponent={itemComponent}
                                     />
                                 </Fade>
                             ) : (
@@ -197,7 +177,7 @@ const DrawerMenu = ({
                         <DrawerSeparator />
 
                         {/* Application Actions */}
-                        <VStack align="stretch" spacing={0} {...styles.actions} px={0}>
+                        <VStack align="stretch" spacing={0} {...styles.actions} px={0} className="acount-menus-wrapper">
                             <Box {...styles.actionsItem}>
                                 {isRegistered ? (
                                     <NestedAccordion
@@ -276,21 +256,19 @@ const DrawerMenu = ({
                                     </Link>
                                 )}
                             </Box>
-                            {storeLocatorEnabled && (
-                                <Box {...styles.actionsItem}>
-                                    <Link to={STORE_LOCATOR_HREF}>
-                                        <HStack>
-                                            <StoreIcon {...styles.icon} />{' '}
-                                            <Text>
-                                                {intl.formatMessage({
-                                                    id: 'drawer_menu.link.store_locator',
-                                                    defaultMessage: 'Store Locator'
-                                                })}
-                                            </Text>
-                                        </HStack>
-                                    </Link>
-                                </Box>
-                            )}
+                            <Box {...styles.actionsItem}>
+                                <Link to={STORE_LOCATOR_HREF}>
+                                    <HStack>
+                                        <LocationIcon {...styles.icon} />{' '}
+                                        <Text>
+                                            {intl.formatMessage({
+                                                id: 'drawer_menu.link.store_locator',
+                                                defaultMessage: 'Store Locator'
+                                            })}
+                                        </Text>
+                                    </HStack>
+                                </Link>
+                            </Box>
                             {showLocaleSelector && (
                                 <Box>
                                     <LocaleSelector
@@ -312,7 +290,7 @@ const DrawerMenu = ({
                         <DrawerSeparator />
 
                         {/* Support Links */}
-                        <NestedAccordion
+                        <NestedAccordion className="legal-links-wrapper"
                             allowMultiple={true}
                             // NOTE: Modify this content and builder as you see fit.
                             urlBuilder={() => '/'}
@@ -419,19 +397,7 @@ DrawerMenu.propTypes = {
     /**
      * Function called when the drawer logo is clicked.
      */
-    onLogoClick: PropTypes.func,
-    /**
-     * Customize the property representing the items.
-     */
-    itemsKey: PropTypes.string,
-    /**
-     * Cusomtize the property representing the items count.
-     */
-    itemsCountKey: PropTypes.string,
-    /**
-     * Component to be rendered for each individual menu item.
-     */
-    itemComponent: PropTypes.elementType
+    onLogoClick: PropTypes.func
 }
 
-export {DrawerMenu}
+export default DrawerMenu

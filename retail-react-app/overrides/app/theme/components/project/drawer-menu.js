@@ -17,7 +17,7 @@ export default {
             height: 5
         },
         logo: {
-            width: 12,
+            width: 70,
             height: 8
         },
         socialsItem: {
