@@ -16,8 +16,7 @@ import {Box, Image} from '@salesforce/retail-react-app/app/components/shared/ui'
  */
 export const ImageTile = ({ image }) => {
 
-    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url)
-
+    const imageURL = image?.src?.mobile ? image?.src?.mobile : image?.url
     return (
         <Box className={'image-tile'}>
             <figure className={'image-tile-figure'}>

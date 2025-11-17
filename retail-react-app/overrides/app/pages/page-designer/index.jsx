@@ -3,20 +3,7 @@ import {useParams} from 'react-router-dom'
 import {Box} from '@chakra-ui/react'
 import {usePage} from '@salesforce/commerce-sdk-react'
 import {Page} from '@salesforce/commerce-sdk-react/components'
-import { 
-    ImageTile, 
-    ImageWithText, 
-    ProductTile, 
-    RichTextBox, 
-    EditorialRichText, 
-    MainBannerWithContent,
-    linkButton,
-    TextHeading,
-    VerticalContentTile,
-    HorizontalContentTile,
-    CollapsibleItem,
-    PDPlusContentAsset
-} from '../../page-designer/assets'
+import { ImageTile, ImageWithText, ProductTile, RichTextBox, EditorialRichText, MainBannerWithContent } from '../../page-designer/assets'
 import {
     Carousel,
     MobileGrid1r1c,
@@ -24,9 +11,7 @@ import {
     MobileGrid2r2c,
     MobileGrid2r3c,
     MobileGrid3r1c,
-    MobileGrid3r2c,
-    MobileGridFlexi3r2c,
-    CollapsibleLayout
+    MobileGrid3r2c
 } from '../../page-designer/layouts'
 
 import {HTTPError, HTTPNotFound} from '@salesforce/pwa-kit-react-sdk/ssr/universal/errors'
@@ -45,15 +30,7 @@ const PAGEDESIGNER_TO_COMPONENT = {
     'commerce_layouts.mobileGrid2r2c': MobileGrid2r2c,
     'commerce_layouts.mobileGrid2r3c': MobileGrid2r3c,
     'commerce_layouts.mobileGrid3r1c': MobileGrid3r1c,
-    'commerce_layouts.mobileGrid3r2c': MobileGrid3r2c,
-    'commerce_layouts.mobileGridFlexi3r2c': MobileGridFlexi3r2c,
-    'commerce_assets.linkbutton': linkButton,
-    'commerce_assets.textHeader': TextHeading,
-    'commerce_assets.verticalContentTile': VerticalContentTile,
-    'commerce_assets.horizontalContentTile': HorizontalContentTile,
-    'pd_layouts.pdPlusAccordionLayout': CollapsibleLayout,
-    'pd_assets.pdPlusAccordion': CollapsibleItem,
-    'pd_assets.pdPlusContentAsset': PDPlusContentAsset
+    'commerce_layouts.mobileGrid3r2c': MobileGrid3r2c
 }
 //console.log(PAGEDESIGNER_TO_COMPONENT)
 const PageViewer = () => {
@@ -68,7 +45,6 @@ const PageViewer = () => {
     return (
         <Box className='page-wrapper'>
             <Page page={page} components={PAGEDESIGNER_TO_COMPONENT} />
-            <Storefronts/>
         </Box>
     )
 }

@@ -52,7 +52,7 @@
         height: 100%;
         border-radius: 16px;
         padding: 18px 32px;
-        background: $grey1;
+        background: $grey12;
         margin-bottom: 32px;
     
         @include media-max(md) {
@@ -104,6 +104,10 @@
                     line-height: 20px;
                     font-family: $fontGeomanistRegular;
                     font-weight: 400;
+
+                    h4 {
+                        margin-bottom: 8px;
+                    }
                 }
 
                 .inner-content {

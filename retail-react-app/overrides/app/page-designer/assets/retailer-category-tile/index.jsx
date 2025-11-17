@@ -33,39 +33,16 @@ export const RetailerCategoryTile = ({catDisplayName, category, image, customCla
     const textHeading = catDisplayName
     const catLink = category
     const {error, data: categoryData} = useCategory(
-        {
-            parameters: {
-                id: category
-            }
-        })
-       const fallbackImage = categoryData?.image;
-       const ctgData = categoryData;
-       var categoryModal = {};
-       if (ctgData) {
-        categoryModal = {
-                id: ctgData.id,
-                name: ctgData.name,
-                image: ctgData.c_icon,
-                integrated: ctgData.c_integrated,
-                latitude: ctgData.c_latitude ? parseFloat(ctgData.c_latitude) : null,
-                longitude: ctgData.c_longitude ? parseFloat(ctgData.c_longitude) : null,
-                radius: ctgData.c_radius,
-                excludedStates: ctgData.c_excludedStates ? ctgData.c_excludedStates : [],
-                marketplaceCategories: ctgData.c_marketplaceCategory,
-                partnerUrl: ctgData.c_acima_partner_url
-            }
+    {
+        parameters: {
+            id: category
         }
+    })
+    const fallbackImage = categoryData?.image;
 
-       const [selectedCategory, setSelectedCategory] = useState(null)
+    const [selectedCategory, setSelectedCategory] = useState(null)
 
-       const {isOpen, onOpen, onClose} = useDisclosure()
-
-       const onClickHander = (ctgData) => {
-            onOpen()
-            setSelectedCategory(ctgData)
-        }
-
-    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url ? image?.url:categoryData?.image)
+    const imageURL = image?.src?.mobile ? image?.src?.mobile : image?.url ? image?.url:categoryData?.image
 
     return (
         <>
@@ -73,10 +50,8 @@ export const RetailerCategoryTile = ({catDisplayName, category, image, customCla
                 className={'retailer-category-tile'} 
                 width="100%" 
                 height='100%'
-                data-name={categoryModal?.name} 
-                data-marketplaceCategory={categoryModal.marketplaceCategories && categoryModal.marketplaceCategories.length ? categoryModal.marketplaceCategories.join(', ') : ''}
             >
-                <Box onClick={(e) => { e.preventDefault(); onClickHander(ctgData); }}  display="inline-block" textDecoration="none" _hover={{ textDecoration: "none", cursor: "pointer" }} height='100%' width='100%'>
+                <Box display="inline-block" textDecoration="none" _hover={{ textDecoration: "none", cursor: "pointer" }} height='100%' width='100%'>
                     <Box 
                         className={'image-tile-figure'} 
                         borderRadius="12px" 
@@ -118,11 +93,6 @@ export const RetailerCategoryTile = ({catDisplayName, category, image, customCla
                     </Box>
                 </Box>
             </Box>
-            <LeaseApprovalModal
-                selectedCategory={categoryModal}
-                isOpen={isOpen}
-                onClose={onClose}
-            />
         </>
     )
 

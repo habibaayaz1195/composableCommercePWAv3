@@ -30,10 +30,6 @@ export const linkButton = ({buttonText, tileLink, getStartedModal}) => {
     const btnText = buttonText
     const isAbsolute = isAbsoluteURL(tileLink)
     const linkProps = isAbsolute ? {href: tileLink} : {to: tileLink}
-    // Disclosure for Get Started modal
-    const { isOpen: isOpenStart, onOpen: onOpenStart, onClose: onCloseStart } = useDisclosure()
-    // Disclosure for Classic Credit modal
-    const { isOpen: isOpenCredit, onOpen: onOpenCredit, onClose: onCloseCredit } = useDisclosure()
 
     // Click handler for "Apply for Credit" button
     const handleClick = e => {
@@ -71,18 +67,6 @@ export const linkButton = ({buttonText, tileLink, getStartedModal}) => {
                     <Text as="span">{btnText}</Text>
                 </Button>
             )}
-
-            {/* Modal for Get Started form */}
-            <GetStartedFormModal
-                isOpen={isOpenStart}
-                onClose={onCloseStart}
-            />
-
-            {/* Modal for Classic Credit redirecting after 3 seconds */}
-            <ClassicCreditModal
-                isOpen={isOpenCredit}
-                onClose={onCloseCredit}
-            />
         </>
     )
 }

@@ -50,12 +50,13 @@
     }
 
     .carousel {
-        max-width: 1072px;
+        max-width: 100%;
         margin: 0 auto;
+        padding: 0 70px;
     }
     
     .carousel-container-items {
-        gap: 24px;
+        gap: 16px;
         overflow-x: scroll;
         overflow-y: hidden;
 

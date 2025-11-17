@@ -38,5 +38,3 @@ export * from './blog-detail-component'
 export * from './blog-tile-component'
 export * from './news-detail-report'
 export * from './case-detail-tile'
-
-
