@@ -22,7 +22,7 @@ const Home = loadable(() => import('./pages/banner'), {fallback})
 const MyNewRoute = loadable(() => import('./pages/my-new-route'))
 
 const ContentfulHome = loadable(()=>import("./pages/product-contentful"))
-const ContentfulAboutus = loadable(()=>import("./pages/about-us-contentful/index2"))
+const ContentfulAboutus = loadable(()=>import("./pages/about-us-contentful/index"))
 const Checkout = loadable(() => import('./pages/checkout'), { fallback })
 const ProductDetail = loadable(() => import('./pages/product-detail'))
 const PageViewer = loadable(() => import('./pages/page-viewer'), {fallback})
