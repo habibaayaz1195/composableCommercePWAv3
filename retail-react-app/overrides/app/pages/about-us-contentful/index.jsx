@@ -6,17 +6,32 @@ import Categories from './categories';
 import { SimpleGrid, Box, Image, Heading, Text, Flex, Stack } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { createClient } from 'contentful';
-import '../../static/style-sheets/landing-page.scss'
+import SfccProducts from '../product-contentful/sfcc_products';
+//import '../../static/style-sheets/landing-page.scss'
 
 const AboutUsContentful = () => {
     const [components, setComponents] = useState([])
     const [sliderImages, setSliderImages] = useState([]);
     const [featuredCategories, setFeaturedCategories] = useState([]);
+    const [entry, setEntry] = useState(null);
 
     const client = createClient({
         space: 'rb9ez79izqmr',
         accessToken: 'WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o'
     });
+
+    useEffect(() => {
+        client
+            .getEntry('2WFivQoxNQVovrKlInnrsE')
+            .then(setEntry)
+            .catch(console.error);
+    }, [client]);
+
+    // Safe product IDs: empty array until entry is loaded
+    const productIds = entry
+        ? Object.values(entry.fields).map(id => id.toString())
+        : [];
+    console.log('productIds array:', productIds);
 
     // ========== Categories ==========
     async function getFeaturedCategories() {
@@ -121,6 +136,9 @@ const AboutUsContentful = () => {
                         />
                     </Box>
                 )}
+
+                {/* Product Data Example */}
+                <SfccProducts sfccproducts={{ products: productIds, title: 'Featured Products' }} />
 
                 {/* Banner */}
                 <Box className='banner-section'
