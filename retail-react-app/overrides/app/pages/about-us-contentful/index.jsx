@@ -1,195 +1,169 @@
 import React, { useEffect, useState } from 'react'
 import fetch from 'cross-fetch'
 import { useQuery } from '@tanstack/react-query'
-import Aboutuspage from '../../models/Aboutuspage';
+import SliderComponent from "./sliderComponent";
+import Categories from './categories';
 import { SimpleGrid, Box, Image, Heading, Text, Flex, Stack } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { createClient } from 'contentful';
+import '../../static/style-sheets/landing-page.scss'
 
 const AboutUsContentful = () => {
     const [components, setComponents] = useState([])
+    const [sliderImages, setSliderImages] = useState([]);
+    const [featuredCategories, setFeaturedCategories] = useState([]);
 
     const client = createClient({
         space: 'rb9ez79izqmr',
         accessToken: 'WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o'
     });
 
+    // ========== Categories ==========
     async function getFeaturedCategories() {
         const res = await client.getEntries({
             content_type: 'homepage',
-            //'fields.componentType': 'f_Categories',
-            include: 2 // fetch linked category data
+            include: 2
         });
 
         const homepage = res.items[0];
+
         const featuredCategories = homepage.fields.featuredCategories.map(cat => ({
             title: cat.fields.title,
-            image: cat.fields.image?.fields.file.url,
+            asset: { url: "https:" + cat.fields.image?.fields.file.url },
             slug: cat.fields.slug,
-            link: cat.fields.categoryLink
+            link: cat.fields.categoryLink,
+            altText: cat.fields.title
         }));
 
         console.log('Featured Categories', featuredCategories);
+
+        return featuredCategories;
     }
+
 
     getFeaturedCategories();
 
-    //Getting Slider
+    // ========== GET SLIDER ==========
     async function getSlider() {
         const slider = await client.getEntry("1TNV3uzW9EtyPkK8VgDU2e");
-        console.log('Slider', slider);
+
+        const sliderImages = slider.fields.images.map((img) => ({
+            url: "https:" + img.fields.file.url,
+            title: img.fields.title || ""
+        }));
+
+        console.log("Slider Clean Array:", sliderImages);
+        return sliderImages;
     }
-    getSlider();
-    
-    //const spaceid = "rb9ez79izqmr"
-    //const access_token = "WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o"
-    const { isLoading, error, data } = useQuery({ 
+
+    useEffect(() => {
+        async function loadCategories() {
+            const cats = await getFeaturedCategories();
+            setFeaturedCategories(cats);
+        }
+        loadCategories();
+    }, []);
+
+
+    useEffect(() => {
+        async function loadSlider() {
+            const imgs = await getSlider();
+            setSliderImages(imgs);
+        }
+        loadSlider();
+    }, []);
+
+    // ========== GET ABOUT US PAGE ==========
+    const { isLoading, error, data } = useQuery({
         queryKey: ['aboutuspage'],
         queryFn: () =>
             fetch(
-                `https://cdn.contentful.com/spaces/rb9ez79izqmr/environments/master/entries?access_token=WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o&content_type=aboutUsNew&include=10`,
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Content-Type': 'application/json'
-                    }
-                }
+                `https://cdn.contentful.com/spaces/rb9ez79izqmr/environments/master/entries?access_token=WYgOvVOq3zmY2VDks6EU_ocAVgZCHgV-QsoNkarBa1o&content_type=aboutUsNew&include=10`
             ).then((res) => res.json())
-    })
+    });
 
     useEffect(() => {
         if (data) {
-            console.log('Contentful data', data)
-            console.log(data)
-            //const aboutUsData = Aboutuspage.fromJson(data)
-            //setComponents(aboutUsData.components)
+            console.log("About us data:", data);
         }
-    }, [data])
+    }, [data]);
 
     if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-  const page = data?.items?.[0]?.fields;
-  const assets = data?.includes?.Asset || [];
+    const page = data?.items?.[0]?.fields;
+    const assets = data?.includes?.Asset || [];
 
     return (
         <>
-        <SimpleGrid className='page-wrapper'>
-            <Box className='banner-section' 
-                bgImage={
-                    assets[0]?.fields?.file?.url ? `url(https:${assets[0].fields.file.url})` : "none"
-                }
-                bgSize="cover"
-                bgPosition="center"
-                bgRepeat="no-repeat"
-            >
-                <Box maxW={1200} mx={'auto'} py={'60px'} px={'24px'} className='section-container'>
-                    <Box className='banner-content'>
-                        <Text as={'p'} className='title'>{data?.items[0]?.fields.title}</Text>
-                        <Heading as={'h1'} className="short-desc">{data?.items[0]?.fields.subtitle}</Heading>
+            <SimpleGrid className='page-wrapper'>
+                {/* INSERT SLIDER HERE */}
+                    {sliderImages.length > 0 && (
+                    <Box 
+                        mx="auto" 
+                        className='main-banner-wrapper'
+                        overflow="hidden"
+                        width="100vw"
+                        position="relative"
+                    >
+                        <SliderComponent sliderData={{ images: sliderImages }} />
+                    </Box>
+                )}
+
+                {/* INSERT CATEGORIES HERE */}
+                {featuredCategories.length > 0 && (
+                    <Box maxW="1200px" mx="auto" width="100%">
+                        <Categories 
+                            fCategoriesData={{
+                                title: "Featured Categories",
+                                f_categories: featuredCategories
+                            }} 
+                        />
+                    </Box>
+                )}
+
+                {/* Banner */}
+                <Box className='banner-section'
+                    bgImage={assets[0]?.fields?.file?.url ? `url(https:${assets[0].fields.file.url})` : "none"}
+                    bgSize="cover"
+                    bgPosition="center"
+                >
+                    <Box maxW={1200} mx={'auto'} py={'60px'} px={'24px'}>
+                        <Text className='title'>{page.title}</Text>
+                        <Heading className="short-desc">{page.subtitle}</Heading>
                     </Box>
                 </Box>
-            </Box>
-            
-            <Box className='box-content-section'>
-                <Flex
-                    direction={{ base: 'column', md: 'row' }}
-                    maxW="1200px"
-                    mx="auto"
-                    py="60px"
-                    px="24px"
-                    alignItems="center"
-                >
-                    <Stack spacing={6} flex="1" className='content-holder left-content'>
-                        {page?.leftColumnText &&
-                        documentToReactComponents(data.items[0].fields.leftColumnText)}
-                    </Stack>
 
-                    <Image
-                        flex="1"
-                        src={assets[1]?.fields?.file?.url ? `https:${assets[1].fields.file.url}` : ""}
-                        alt="About us right column"
-                        borderRadius="md"
-                        className='content-holder right-content'
-                    />
-                </Flex>
 
-                <Flex
-                    direction={{ base: "column", md: "row-reverse" }}
-                    maxW="1200px"
-                    mx="auto"
-                    py="60px"
-                    px="24px"
-                    alignItems="center"
-                    gap={10}
-                >
-                    <Stack spacing={6} flex="1" className='content-holder left-content'>
-                        {page?.rightColumnText &&
-                        documentToReactComponents(page.rightColumnText)}
-                    </Stack>
+                {/* CONTENT SECTIONS BELOW */}
+                <Box className='box-content-section'>
+                    {/* Left + Right Section */}
+                    <Flex className='text-with-content-wrapper' direction={{ base: 'column', md: 'row' }} maxW="1200px" mx="auto" py="60px">
+                        <Stack flex="1">
+                            {page?.leftColumnText && documentToReactComponents(page.leftColumnText)}
+                        </Stack>
 
-                    <Image
-                        flex="1"
-                        src={assets[2]?.fields?.file?.url ? `https:${assets[2].fields.file.url}` : ""}
-                        alt="About us second section"
-                        borderRadius="md"
-                        className='content-holder right-content'
-                    />
-                </Flex>
-            </Box>
-            
-            <Box maxW="1200px" mx="auto" py="80px" px="24px">
-                <Heading textAlign="center" mb={10}>
-                    Our Core Values
-                </Heading>
+                        <Image
+                            flex="1"
+                            src={assets[1]?.fields?.file?.url ? `https:${assets[1].fields.file.url}` : ""}
+                        />
+                    </Flex>
 
-                <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
-                    <Box
-                        textAlign="center"
-                        p={6}
-                        borderRadius="2xl"
-                        boxShadow="lg"
-                        bg="white"
-                        _hover={{ transform: "translateY(-5px)", transition: "0.3s" }}
-                    >
-                        <Heading as="h3" size="md" mb={3}>Innovation</Heading>
-                        <Text color="gray.600">
-                            {page?.missionStatement && page.missionStatement}
-                        </Text>
-                    </Box>
+                    {/* Second Section */}
+                    <Flex direction={{ base: 'column', md: 'row-reverse' }} maxW="1200px" mx="auto" py="60px">
+                        <Stack flex="1">
+                            {page?.rightColumnText && documentToReactComponents(page.rightColumnText)}
+                        </Stack>
 
-                    <Box
-                        textAlign="center"
-                        p={6}
-                        borderRadius="2xl"
-                        boxShadow="lg"
-                        bg="white"
-                        _hover={{ transform: "translateY(-5px)", transition: "0.3s" }}
-                    >
-                        <Heading as="h3" size="md" mb={3}>Excellence</Heading>
-                        <Text color="gray.600">
-                            {page?.visionStatement && page.visionStatement}
-                        </Text>
-                    </Box>
-
-                    <Box
-                        textAlign="center"
-                        p={6}
-                        borderRadius="2xl"
-                        boxShadow="lg"
-                        bg="white"
-                        _hover={{ transform: "translateY(-5px)", transition: "0.3s" }}
-                    >
-                        <Heading as="h3" size="md" mb={3}>Collaboration</Heading>
-                        <Text color="gray.600">
-                            {page?.coreValues && page.coreValues}
-                        </Text>
-                    </Box>
-                </SimpleGrid>
-            </Box>
-        </SimpleGrid>
-      </>
-    )
+                        <Image
+                            flex="1"
+                            src={assets[2]?.fields?.file?.url ? `https:${assets[2].fields.file.url}` : ""}
+                        />
+                    </Flex>
+                </Box>
+            </SimpleGrid>
+        </>
+    );
 }
 
-export default AboutUsContentful
+export default AboutUsContentful;
