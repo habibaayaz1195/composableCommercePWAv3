@@ -82,9 +82,9 @@ export const StaticContent = ({
     const [show, setShow] = React.useState(false)
     const handleToggle = () => setShow(!show)
 
-    const feature_ImageURL = getImageKitURL(feature_Image?.src?.mobile ? feature_Image?.src?.mobile : feature_Image?.url)
-    const module_BannerImageURL = getImageKitURL(module_BannerImage?.src?.mobile ? module_BannerImage?.src?.mobile : module_BannerImage?.url)
-    const feature_IconURL = getImageKitURL(feature_Icon?.src?.mobile ? feature_Icon?.src?.mobile : feature_Icon?.url)
+    const feature_ImageURL = feature_Image?.src?.mobile ? feature_Image?.src?.mobile : feature_Image?.url
+    const module_BannerImageURL = module_BannerImage?.src?.mobile ? module_BannerImage?.src?.mobile : module_BannerImage?.url
+    const feature_IconURL = feature_Icon?.src?.mobile ? feature_Icon?.src?.mobile : feature_Icon?.url
 
 
     return (

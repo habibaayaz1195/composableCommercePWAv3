@@ -42,6 +42,13 @@ export const RetailerCategoryTile = ({catDisplayName, category, image, customCla
 
     const [selectedCategory, setSelectedCategory] = useState(null)
 
+       const {isOpen, onOpen, onClose} = useDisclosure()
+
+       const onClickHander = (ctgData) => {
+            onOpen()
+            setSelectedCategory(ctgData)
+        }
+
     const imageURL = image?.src?.mobile ? image?.src?.mobile : image?.url ? image?.url:categoryData?.image
 
     return (

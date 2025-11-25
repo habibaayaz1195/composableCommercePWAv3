@@ -11,7 +11,7 @@ import Link from '@salesforce/retail-react-app/app/components/link'
 
 export const BlogTileComponent = ({ blogTileImage, blogTileDate, blogTileHeading, blogTileImageAlt, blogTileLink , blogTileID, selectedCategory }) => {
 
-    const blogTileImageURL = getImageKitURL(blogTileImage?.url)
+    const blogTileImageURL = blogTileImage?.url
 
     return (
         <Box

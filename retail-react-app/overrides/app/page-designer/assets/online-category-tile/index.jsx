@@ -17,7 +17,7 @@ import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
  */
 export const OnlineCategoryTile = ({ categorieTileText, categoryImgFile, categoryImgAlt,categoryTileID }) => {
 
-    const categoryImgFileURL = getImageKitURL(categoryImgFile?.url)
+    const categoryImgFileURL = categoryImgFile?.url
 
     return (
 

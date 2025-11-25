@@ -20,7 +20,7 @@ export const IconTxtCard = ({ cardIconImg, cardIconAlt, cardRichText }) => {
     const iconImgAlt = cardIconAlt
     const cardTxt = cardRichText
 
-    const iconImgURL = getImageKitURL(iconImg?.url)
+    const iconImgURL = iconImg?.url
 
     return (
 

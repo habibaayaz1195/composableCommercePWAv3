@@ -9,7 +9,7 @@ export const YouTubeVideo = ({ videoID, videoPoster, imgAlt, className }) => {
     const intl = useIntl()
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const videoPosterURL = getImageKitURL(videoPoster?.url)
+    const videoPosterURL = videoPoster?.url
 
     return (
         <Box className={`video-wrapper ${className}`} position="relative" borderRadius="lg" overflow="hidden">
