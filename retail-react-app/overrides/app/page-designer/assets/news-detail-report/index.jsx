@@ -31,7 +31,7 @@ export const NewsReportComponent = ({ newsImage, newsAlt,  newsHeading, newsTile
     };
     const { isOpen, onOpen, onClose } = useDisclosure(); // Modal state
 
-    const newsImageURL = getImageKitURL(newsImage?.url)
+    const newsImageURL = newsImage?.url
 
     return (
         <>

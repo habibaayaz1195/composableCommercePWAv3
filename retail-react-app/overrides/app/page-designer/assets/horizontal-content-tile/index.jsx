@@ -50,7 +50,7 @@ export const HorizontalContentTile = ({
     const isMobile = useBreakpointValue({ base: true, md: false });
     const isDesktop = useBreakpointValue({ base: false, md: true });
 
-    const image_FileURL = getImageKitURL(image_File?.src?.mobile ? image_File?.src?.mobile : image_File?.url)
+    const image_FileURL = image_File?.src?.mobile ? image_File?.src?.mobile : image_File?.url
 
     return (
         <Box className='horizontal-tile' height={'100%'}>

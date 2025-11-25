@@ -65,7 +65,7 @@ export const RetailerCategoryTile = ({catDisplayName, category, image, customCla
             setSelectedCategory(ctgData)
         }
 
-    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url ? image?.url:categoryData?.image)
+    const imageURL = image?.src?.mobile ? image?.src?.mobile : image?.url ? image?.url:categoryData?.image
 
     return (
         <>

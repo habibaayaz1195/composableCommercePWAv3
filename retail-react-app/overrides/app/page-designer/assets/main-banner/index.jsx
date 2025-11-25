@@ -28,7 +28,7 @@ export const MainBanner = ({categoryLink, image, heading, restrictedStores, bann
     const catLink = categoryLink
     const restricted_Stores = restrictedStores
 
-    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url)
+    const imageURL = image?.src?.mobile ? image?.src?.mobile : image?.url
 
     return (
         <Box className={`main-banner-wrapper ${bannerClass ? bannerClass : ''}`}>

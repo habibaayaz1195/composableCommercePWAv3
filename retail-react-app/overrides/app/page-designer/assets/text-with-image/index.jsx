@@ -47,7 +47,7 @@ export const PdPlusTextWithImage = ({
     const image_File = imgFile
     const image_Alt = imgAlt
 
-    const image_FileURL = getImageKitURL(image_File?.src?.mobile ? image_File?.src?.mobile : image_File?.url)
+    const image_FileURL = image_File?.src?.mobile ? image_File?.src?.mobile : image_File?.url
 
     return (
         <Box className={'text-image-container'} w='100%' mx='auto' px={4}>
