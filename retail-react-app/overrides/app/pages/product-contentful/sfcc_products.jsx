@@ -47,59 +47,57 @@ const SfccProducts = ({ sfccproducts }) => {
  
 
   return (
-
-    <Flex flexDirection="column" justifyContent={'space-between'}>
-
-      <Text fontWeight={500} pl={5} paddingY="40px" mt={2} fontSize="1.5rem" marginY="0.83em">
-
+    <Box paddingY="40px" width="100%" fontFamily="'Roboto', Arial, sans-serif">
+      <Text fontWeight={500} pl={10} pb={4} mt={2} fontSize="1.5rem" marginY="0.83em">
         {sfccproducts.title}
-
       </Text>
+      <Flex pt={5} flexDirection="row" alignItems="center" justifyContent="space-around">
 
-      <SimpleGrid columns={6} spacing={1} px={4}>
+        <SimpleGrid columns={6} spacing={1} px={4}>
 
-        {products?.data?.map((product, index) => (
-          <a href={`/product/${product.id}`}>
-          <Box
+          {products?.data?.map((product, index) => (
+            <a href={`/product/${product.id}`}>
+              <Box
 
-            key={index}
+                key={index}
 
-            fontFamily="'Roboto', Arial, sans-serif"
+                fontFamily="'Roboto', Arial, sans-serif"
 
-            className="d-flex flex-column bg-grey py-3 position-relative"
+                className="d-flex flex-column bg-grey py-3 position-relative"
 
-            m={2}
+                m={2}
 
-            pb={3}
+                pb={3}
 
-          >
+              >
 
- 
 
-           <Image src={getImage(product)} alt={product.title} boxSize="200px" />
 
-            <Text textTransform="capitalize-first" fontWeight={700} mt={2} mb={0}>
+                <Image src={getImage(product)} alt={product.title} boxSize="200px" />
 
-              {product.name}
+                <Text textTransform="capitalize-first" fontWeight={700} mt={2} mb={0}>
 
-            </Text>
+                  {product.name}
 
-            <Text fontWeight={500} fontSize={'14px'}>
+                </Text>
 
-              Price: {product.price || '0.0'}
+                <Text fontWeight={500} fontSize={'14px'}>
 
-            </Text>
+                  Price: {product.price || '0.0'}
 
-          </Box>
-          </a>
+                </Text>
 
-        ))}
+              </Box>
+            </a>
 
- 
+          ))}
 
-      </SimpleGrid>
 
-    </Flex>
+
+        </SimpleGrid>
+
+      </Flex>
+    </Box>
 
   );
 

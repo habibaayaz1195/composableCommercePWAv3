@@ -33,7 +33,7 @@ export const ImageWithText = ({ITCLink, ITCText, image, heading, alt}) => {
     const LinkWrapper = isAbsolute ? ChakraLink : Link
     const linkProps = isAbsolute ? {href: ITCLink} : {to: ITCLink}
 
-    const imageURL = getImageKitURL(image?.src?.mobile ? image?.src?.mobile : image?.url)
+    const imageURL = image?.src?.mobile ? image?.src?.mobile : image?.url
 
     return (
         <Box className={'image-with-text'}>

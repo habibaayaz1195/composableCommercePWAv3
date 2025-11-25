@@ -17,7 +17,7 @@ export const BlogDetailComponent = ({ blogHeading, blogDate, blogImage, blogImag
         window.print();
     };
 
-    const blogImageURL = getImageKitURL(blogImage?.src?.mobile ? blogImage?.src?.mobile : blogImage?.url)
+    const blogImageURL = blogImage?.src?.mobile ? blogImage?.src?.mobile : blogImage?.url
 
     return (
         <>
