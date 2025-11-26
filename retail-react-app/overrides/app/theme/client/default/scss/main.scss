@@ -18,6 +18,12 @@
 @use './layout/header' as *;
 @use './layout/footer' as *;
 
+// Pages
+@use './pages/landing-page' as *;
+
+// Pages Contentful
+@use './pages/landing-page-contentful' as *;
+
 // Components
 // @use './components/carousel' as *;
 // @use './components/buttons' as *;

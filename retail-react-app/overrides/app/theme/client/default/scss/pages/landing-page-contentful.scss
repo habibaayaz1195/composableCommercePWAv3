@@ -1,0 +1,73 @@
+@use '../skin/skinVariables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+/**Landing Page Styles**/
+
+.main-banner-wrapper {
+    width: 100% !important;
+
+    @media screen and (min-width: 1919px) {
+        width: calc(100vw - 60px);        
+    }
+}
+
+.box-content-section {
+    gap: 60px;
+
+    @media(max-width: 767px) {
+        gap: 40px;
+    }
+
+    .text-with-content-wrapper {
+        ul {
+            padding-left: 40px;
+            margin-top: 20px;
+        }
+    }
+}
+
+.featured-category-section {
+    padding: 60px 0;
+    background: $white;
+
+    .category-holder {
+        .category-title {
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .category-inner {
+            justify-content: space-between;
+
+            .category-item {
+                width: 20%;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    max-height: 250px;
+                }
+            }
+        }
+    }
+}
+
+.feature-product-section {
+    padding: 60px 0;
+
+    .product-header-title {
+        font-size: 24px;
+        text-transform: uppercase; 
+    }
+
+    .product-inner {
+        .product-item {
+            img {
+                width: 100%;
+                height: auto;
+                max-height: 250px;
+            }
+        }
+    }
+}

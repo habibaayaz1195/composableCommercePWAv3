@@ -7,7 +7,6 @@ import { SimpleGrid, Box, Image, Heading, Text, Flex, Stack } from '@chakra-ui/r
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { createClient } from 'contentful';
 import SfccProducts from '../product-contentful/sfcc_products';
-//import '../../static/style-sheets/landing-page.scss'
 
 const AboutUsContentful = () => {
     const [components, setComponents] = useState([])
@@ -127,17 +126,19 @@ const AboutUsContentful = () => {
 
                 {/* INSERT CATEGORIES HERE */}
                 {featuredCategories.length > 0 && (
-                    <Box maxW="1200px" mx="auto" width="100%">
-                        <Categories 
-                            fCategoriesData={{
-                                title: "Featured Categories",
-                                f_categories: featuredCategories
-                            }} 
-                        />
+                    <Box className='featured-category-section'>
+                        <Box className='featured-cat-wrapper' maxW="1400px" mx="auto" width="100%">
+                            <Categories 
+                                fCategoriesData={{
+                                    title: "Featured Categories",
+                                    f_categories: featuredCategories
+                                }} 
+                            />
+                        </Box>  
                     </Box>
                 )}
 
-                {/* Product Data Example */}
+                {/* Product Data */}
                 <SfccProducts sfccproducts={{ products: productIds, title: 'Featured Products' }} />
 
                 {/* Banner */}
@@ -156,28 +157,36 @@ const AboutUsContentful = () => {
                 {/* CONTENT SECTIONS BELOW */}
                 <Box className='box-content-section'>
                     {/* Left + Right Section */}
-                    <Flex className='text-with-content-wrapper' direction={{ base: 'column', md: 'row' }} maxW="1200px" mx="auto" py="60px">
-                        <Stack flex="1">
-                            {page?.leftColumnText && documentToReactComponents(page.leftColumnText)}
-                        </Stack>
+                    <Box className='content-inner' bgColor={'white'} py="60px">
+                        <Flex className='text-with-content-wrapper' gap={'60px'} direction={{ base: 'column', md: 'row' }} maxW="1200px" mx="auto" alignItems={'center'}>
+                            <Stack flex="1">
+                                {page?.leftColumnText && documentToReactComponents(page.leftColumnText)}
+                            </Stack>
 
-                        <Image
-                            flex="1"
-                            src={assets[1]?.fields?.file?.url ? `https:${assets[1].fields.file.url}` : ""}
-                        />
-                    </Flex>
+                            <Box className='image-holder' maxW={'400px'}>
+                                <Image
+                                    flex="1" 
+                                    src={assets[1]?.fields?.file?.url ? `https:${assets[1].fields.file.url}` : ""}
+                                />
+                            </Box>
+                        </Flex>
+                    </Box>
 
                     {/* Second Section */}
-                    <Flex direction={{ base: 'column', md: 'row-reverse' }} maxW="1200px" mx="auto" py="60px">
-                        <Stack flex="1">
-                            {page?.rightColumnText && documentToReactComponents(page.rightColumnText)}
-                        </Stack>
+                    <Box className='content-inner' py="60px">
+                        <Flex className='text-with-content-wrapper' gap={'60px'} direction={{ base: 'column', md: 'row-reverse' }} maxW="1200px" mx="auto" alignItems={'center'}>
+                            <Stack flex="1">
+                                {page?.rightColumnText && documentToReactComponents(page.rightColumnText)}
+                            </Stack>
 
-                        <Image
-                            flex="1"
-                            src={assets[2]?.fields?.file?.url ? `https:${assets[2].fields.file.url}` : ""}
-                        />
-                    </Flex>
+                            <Box className='image-holder' maxW={'400px'}>
+                                <Image
+                                    flex="1"
+                                    src={assets[2]?.fields?.file?.url ? `https:${assets[2].fields.file.url}` : ""}
+                                />
+                            </Box>
+                        </Flex>
+                    </Box>
                 </Box>
             </SimpleGrid>
         </>
