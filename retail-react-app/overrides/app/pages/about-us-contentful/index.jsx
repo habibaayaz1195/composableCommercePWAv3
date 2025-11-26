@@ -157,7 +157,7 @@ const AboutUsContentful = () => {
                 {/* CONTENT SECTIONS BELOW */}
                 <Box className='box-content-section'>
                     {/* Left + Right Section */}
-                    <Box className='content-inner' bgColor={'white'} py="60px">
+                    <Box className='content-inner' py="60px">
                         <Flex className='text-with-content-wrapper' gap={'60px'} direction={{ base: 'column', md: 'row' }} maxW="1200px" mx="auto" alignItems={'center'}>
                             <Stack flex="1">
                                 {page?.leftColumnText && documentToReactComponents(page.leftColumnText)}
@@ -173,7 +173,7 @@ const AboutUsContentful = () => {
                     </Box>
 
                     {/* Second Section */}
-                    <Box className='content-inner' py="60px">
+                    <Box className='content-inner' py="60px" bgColor={'white'} >
                         <Flex className='text-with-content-wrapper' gap={'60px'} direction={{ base: 'column', md: 'row-reverse' }} maxW="1200px" mx="auto" alignItems={'center'}>
                             <Stack flex="1">
                                 {page?.rightColumnText && documentToReactComponents(page.rightColumnText)}
@@ -187,6 +187,57 @@ const AboutUsContentful = () => {
                             </Box>
                         </Flex>
                     </Box>
+                </Box>
+
+                {/* CONTENT Cards */}
+                <Box maxW="1200px" mx="auto" py="80px" px="24px">
+                    <Heading textAlign="center" mb={10}>
+                        Our Core Values
+                    </Heading>
+
+                    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+                        <Box
+                            textAlign="center"
+                            p={6}
+                            borderRadius="2xl"
+                            boxShadow="lg"
+                            bg="white"
+                            _hover={{ transform: "translateY(-5px)", transition: "0.3s" }}
+                        >
+                            <Heading as="h3" size="md" mb={3}>Innovation</Heading>
+                            <Text color="gray.600">
+                                {page?.missionStatement && page.missionStatement}
+                            </Text>
+                        </Box>
+
+                        <Box
+                            textAlign="center"
+                            p={6}
+                            borderRadius="2xl"
+                            boxShadow="lg"
+                            bg="white"
+                            _hover={{ transform: "translateY(-5px)", transition: "0.3s" }}
+                        >
+                            <Heading as="h3" size="md" mb={3}>Excellence</Heading>
+                            <Text color="gray.600">
+                                {page?.visionStatement && page.visionStatement}
+                            </Text>
+                        </Box>
+
+                        <Box
+                            textAlign="center"
+                            p={6}
+                            borderRadius="2xl"
+                            boxShadow="lg"
+                            bg="white"
+                            _hover={{ transform: "translateY(-5px)", transition: "0.3s" }}
+                        >
+                            <Heading as="h3" size="md" mb={3}>Collaboration</Heading>
+                            <Text color="gray.600">
+                                {page?.coreValues && page.coreValues}
+                            </Text>
+                        </Box>
+                    </SimpleGrid>
                 </Box>
             </SimpleGrid>
         </>
