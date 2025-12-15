@@ -269,7 +269,7 @@ function AutocompletePanel(props, search) {
                                     <div className="aa-SourceHeader">{categories}</div>
 
                                     <div className="aa-SourceHeader">
-                                        <span className="aa-SourceHeaderTitle">BRANDS</span>
+                                        <span className="aa-SourceHeaderTitle">TRENDING CATEGOIES</span>
                                         <div className="aa-SourceHeaderLine" />
                                     </div>
                                     <div className="aa-PanelSectionSources">{brands}</div>

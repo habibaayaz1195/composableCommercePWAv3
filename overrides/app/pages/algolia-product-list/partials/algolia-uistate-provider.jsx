@@ -32,7 +32,7 @@ const AlgoliaUiStateProvider = ({
                 persistHierarchicalRootCount: true
             }}
         >
-            <Configure query={query} filters={filters} />
+            <Configure query={query} filters={filters} clickAnalytics />
             {children}
         </InstantSearch>
     )

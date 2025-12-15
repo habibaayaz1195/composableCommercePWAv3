@@ -12,6 +12,7 @@ import {getRuntime} from '@salesforce/pwa-kit-runtime/ssr/server/express'
 import {defaultPwaKitSecurityHeaders} from '@salesforce/pwa-kit-runtime/utils/middleware'
 import {getConfig} from '@salesforce/pwa-kit-runtime/utils/ssr-config'
 import helmet from 'helmet'
+require('dotenv').config()
 
 const options = {
     // The build directory (an absolute path)
@@ -58,8 +59,10 @@ const {handler} = runtime.createHandler(options, (app) => {
                     ],
                     'script-src': [
                         // Used by the service worker in /worker/main.js
-                        'storage.googleapis.com'
+                        'storage.googleapis.com',
+                        'cdn.jsdelivr.net'
                     ],
+ 
                     'connect-src': [
                         // Connect to Einstein APIs
                         'api.cquotient.com',

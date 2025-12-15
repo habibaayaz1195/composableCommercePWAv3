@@ -8,16 +8,16 @@
 import React, {Fragment, useCallback, useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import {Helmet} from 'react-helmet'
-import {useIntl} from 'react-intl'
+import {FormattedMessage, useIntl} from 'react-intl'
 
 // Components
 import {Box, Button, Stack} from '@salesforce/retail-react-app/app/components/shared/ui'
 import {
     useProduct,
     useCategory,
+    useShopperBasketsMutation,
     useShopperCustomersMutation,
-    useCustomerId,
-    useShopperBasketsMutationHelper
+    useCustomerId
 } from '@salesforce/commerce-sdk-react'
 
 // Hooks
@@ -28,19 +28,16 @@ import useEinstein from '@salesforce/retail-react-app/app/hooks/use-einstein'
 import useActiveData from '@salesforce/retail-react-app/app/hooks/use-active-data'
 import {useServerContext} from '@salesforce/pwa-kit-react-sdk/ssr/universal/hooks'
 // Project Components
+import RecommendedProducts from '@salesforce/retail-react-app/app/components/recommended-products'
 import ProductView from '@salesforce/retail-react-app/app/components/product-view'
 import InformationAccordion from '@salesforce/retail-react-app/app/pages/product-detail/partials/information-accordion'
 
 import {HTTPNotFound, HTTPError} from '@salesforce/pwa-kit-react-sdk/ssr/universal/errors'
-import logger from '@salesforce/retail-react-app/app/utils/logger-instance'
-
-import FrequentlyBoughtTogether from '../../components/algolia/recommend/freqBoughtTogether'
-import RelatedProducts from '../../components/algolia/recommend/relatedProducts'
-import LookingSimilar from '../../components/algolia/recommend/lookingSimilar'
 
 // constant
 import {
     API_ERROR_MESSAGE,
+    EINSTEIN_RECOMMENDERS,
     MAX_CACHE_AGE,
     TOAST_ACTION_VIEW_WISHLIST,
     TOAST_MESSAGE_ADDED_TO_WISHLIST,
@@ -51,9 +48,9 @@ import {rebuildPathWithParams} from '@salesforce/retail-react-app/app/utils/url'
 import {useHistory, useLocation, useParams} from 'react-router-dom'
 import {useToast} from '@salesforce/retail-react-app/app/hooks/use-toast'
 import {useWishList} from '@salesforce/retail-react-app/app/hooks/use-wish-list'
-import TrendingFacets from '../../components/algolia/recommend/trendingFacets'
-import TrendingItems from '../../components/algolia/recommend/trendingItems'
-// import RelatedProductsCustom from '../../components/RelatedProductsCustom'
+
+
+// import ConstructorRecommendations from '../../components/ConstructorRecommendation'
 
 const ProductDetail = () => {
     const {formatMessage} = useIntl()
@@ -67,8 +64,8 @@ const ProductDetail = () => {
     const childProductRefs = React.useRef({})
     const customerId = useCustomerId()
     /****************************** Basket *********************************/
-    const {isLoading: isBasketLoading} = useCurrentBasket()
-    const {addItemToNewOrExistingBasket} = useShopperBasketsMutationHelper()
+    const {data: basket} = useCurrentBasket()
+    const addItemToBasketMutation = useShopperBasketsMutation('addItemToBasket')
     const {res} = useServerContext()
     if (res) {
         res.set(
@@ -76,6 +73,7 @@ const ProductDetail = () => {
             `s-maxage=${MAX_CACHE_AGE}, stale-while-revalidate=${STALE_WHILE_REVALIDATE}`
         )
     }
+    const isBasketLoading = !basket?.basketId
 
     /*************************** Product Detail and Category ********************/
     const {productId} = useParams()
@@ -89,16 +87,6 @@ const ProductDetail = () => {
         {
             parameters: {
                 id: urlParams.get('pid') || productId,
-                perPricebook: true,
-                expand: [
-                    'availability',
-                    'promotions',
-                    'options',
-                    'images',
-                    'prices',
-                    'variations',
-                    'set_products'
-                ],
                 allImages: true
             }
         },
@@ -253,7 +241,10 @@ const ProductDetail = () => {
                 quantity
             }))
 
-            await addItemToNewOrExistingBasket(productItems)
+            await addItemToBasketMutation.mutateAsync({
+                parameters: {basketId: basket.basketId},
+                body: productItems
+            })
 
             einstein.sendAddToCart(productItems)
 
@@ -261,7 +252,6 @@ const ProductDetail = () => {
             // by the add to cart modal.
             return productSelectionValues
         } catch (error) {
-            console.log('error', error)
             showError(error)
         }
     }
@@ -314,10 +304,7 @@ const ProductDetail = () => {
                 try {
                     einstein.sendViewProduct(child)
                 } catch (err) {
-                    logger.error('Einstein sendViewProduct error', {
-                        namespace: 'ProductDetail.useEffect',
-                        additionalProperties: {error: err, child}
-                    })
+                    console.error(err)
                 }
                 activeData.sendViewProduct(category, child, 'detail')
             })
@@ -325,10 +312,7 @@ const ProductDetail = () => {
             try {
                 einstein.sendViewProduct(product)
             } catch (err) {
-                logger.error('Einstein sendViewProduct error', {
-                    namespace: 'ProductDetail.useEffect',
-                    additionalProperties: {error: err, product}
-                })
+                console.error(err)
             }
             activeData.sendViewProduct(category, product, 'detail')
         }
@@ -433,20 +417,55 @@ const ProductDetail = () => {
 
                 {/* Product Recommendations */}
                 <Stack spacing={16}>
-                    {!isProductASet && product && (
-                        <>
-                            <FrequentlyBoughtTogether product={product} />
-
-                            <RelatedProducts product={product} />
-
-                            <LookingSimilar product={product} />
-                            <TrendingFacets facetName="__primary_category.2" />
-                            <TrendingItems/>
-                        </>
+                    {!isProductASet && (
+                        <RecommendedProducts
+                            title={
+                                <FormattedMessage
+                                    defaultMessage="Complete the Set"
+                                    id="product_detail.recommended_products.title.complete_set"
+                                />
+                            }
+                            recommender={EINSTEIN_RECOMMENDERS.PDP_COMPLETE_SET}
+                            products={[product]}
+                            mx={{base: -4, md: -8, lg: 0}}
+                            shouldFetch={() => product?.id}
+                        />
                     )}
+                    <RecommendedProducts
+                        title={
+                            <FormattedMessage
+                                defaultMessage="You might also like"
+                                id="product_detail.recommended_products.title.might_also_like"
+                            />
+                        }
+                        recommender={EINSTEIN_RECOMMENDERS.PDP_MIGHT_ALSO_LIKE}
+                        products={[product]}
+                        mx={{base: -4, md: -8, lg: 0}}
+                        shouldFetch={() => product?.id}
+                    />
+
+                    <RecommendedProducts
+                        // The Recently Viewed recommender doesn't use `products`, so instead we
+                        // provide a key to update the recommendations on navigation.
+                        key={location.key}
+                        title={
+                            <FormattedMessage
+                                defaultMessage="Recently Viewed"
+                                id="product_detail.recommended_products.title.recently_viewed"
+                            />
+                        }
+                        recommender={EINSTEIN_RECOMMENDERS.PDP_RECENTLY_VIEWED}
+                        mx={{base: -4, md: -8, lg: 0}}
+                    />
                 </Stack>
             </Stack>
-             {/* {product && <RelatedProductsCustom primaryCategoryId={product.primaryCategoryId}/>} */}
+            {/* <ConstructorRecommendations
+                productID={product?.id}
+                noOfResults={8}
+                podId="bestsellers"
+                // filters={{size: 'medium'}} //used for pods with strategy 'filtered'
+                // term="dress" // used for pods with strategy 'Query Recommendations'
+            /> */}
         </Box>
     )
 }

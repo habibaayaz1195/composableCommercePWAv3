@@ -19,11 +19,14 @@ const fallback = <Skeleton height="75vh" width="100%" />
 // Create your pages here and add them to the routes array
 // Use loadable to split code into smaller js chunks
 const Home = loadable(() => import('./pages/home'), {fallback})
+// const Checkout = loadable(() => import('./pages/checkout'), { fallback })
+const PageViewer = loadable(() => import('./pages/page-viewer'), {fallback})
 const ProductList = loadable(() => import('./pages/algolia-product-list'), {
     fallback
 })
 
-const ProductDetail = loadable(() => import('./pages/algolia-product-detail'), {
+const ProductDetail = loadable(() => import('./pages/product-detail'))
+const AlgoliaProductDetail = loadable(() => import('./pages/algolia-product-detail'), {
     fallback
 })
 
@@ -34,16 +37,29 @@ const routes = [
         exact: true
     },
     {
-        path: '/search',
-        component: ProductList
+        path: '/page-viewer/:pageId',
+        component: PageViewer
     },
+    // {
+    //     path: '/checkout',
+    //     component: Checkout,
+    //     exact: true
+    // },
     {
         path: '/category/:categoryId',
         component: ProductList
     },
     {
+        path: '/search',
+        component: ProductList
+    },
+    // {
+    //     path: '/product/:productId',
+    //     component: ProductDetail
+    // },
+    {
         path: '/product/:productId',
-        component: ProductDetail
+        component: AlgoliaProductDetail
     },
     ..._routes
 ]

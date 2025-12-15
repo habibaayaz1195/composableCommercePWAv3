@@ -2,6 +2,7 @@
 
 node_modules/
 build/
+.env
 
 algolia-config.json
 commerce-api-config.json

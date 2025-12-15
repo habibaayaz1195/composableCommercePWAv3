@@ -4,7 +4,8 @@ import '@algolia/ui-components-horizontal-slider-theme'
 import {TrendingFacets as AlgoliaTrendingFacets} from '@algolia/recommend-react'
 import {getConfig} from '@salesforce/pwa-kit-runtime/utils/ssr-config'
 import WidgetHeader from './utils/widgetheader'
-import {BrandItem} from '../algolia/autocomplete/components/BrandItem'
+// import {BrandItem} from '../algolia/autocomplete/components/BrandItem'
+import {BrandItem} from '../autocomplete/components/BrandItem'
 import {recommendClient} from '../../algolia/autocomplete/recommendClient'
 
 const TrendingFacets = ({facetName, title}) => {

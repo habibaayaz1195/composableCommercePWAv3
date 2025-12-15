@@ -12,6 +12,7 @@ const AlgoliaHitsProducts = (props) => {
     const {status} = useInstantSearch(props)
     const [selectedColors, setSelectedColors] = useState({})
 
+
     if (isLoading || status === 'loading' || status === 'stalled') {
         return (
             <>
@@ -38,6 +39,9 @@ const AlgoliaHitsProducts = (props) => {
                     }}
                     isFavourite={isInWishlist(hit)}
                     onFavouriteToggle={(isFavourite) => {
+                        if(isFavourite){
+                            sendEvent("conversion", hit, "Item Added To Favorites")
+                        }
                         const action = isFavourite ? addItemToWishlist : removeItemFromWishlist
                         return action(hit)
                     }}

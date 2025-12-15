@@ -168,7 +168,8 @@ function ProductItem({hit, components, navigate, currency}: ProductItemProps) {
             onClick={() => navigate('/product/' + hit.objectID)}
         >
             <div className="aa-ItemContent">
-                <ProductImage url={hit.lsImage} name={hit.name} />
+                {/* <ProductImage url={hit.lsImage} name={hit.name} /> */}
+                <ProductImage url={hit.lsImage} name={hit.name} hit={hit}/>
                 <ProductDetails
                     hit={hit}
                     components={components}
@@ -186,11 +187,35 @@ function ProductItem({hit, components, navigate, currency}: ProductItemProps) {
  * @param {{ url: string, name: string }} props - The component props.
  * @returns {JSX.Element} The rendered product image.
  */
-const ProductImage = ({url, name}) => (
-    <div className="aa-ItemPicture--loaded">
-        <img src={url} alt={name} />
-    </div>
-)
+
+function getImageUrl(product) {
+    let imageUrl = null
+ 
+    if (product.image_groups) {
+        product.image_groups.forEach((imageGroup) => {
+            if (imageGroup.view_type == 'large') {
+                imageUrl = imageGroup.images[0].dis_base_link
+            }
+        })
+    }
+    return imageUrl;
+}
+
+// const ProductImage = ({url, name}) => (
+//     <div className="aa-ItemPicture--loaded">
+//         <img src={url} alt={name} />
+//     </div>
+// )
+
+const ProductImage = ({url, name,hit}) =>{
+    let fallbackImgUrl = hit && getImageUrl(hit)
+    let imageURL = fallbackImgUrl || url;
+    return (
+        <div className="aa-ItemPicture--loaded">
+            <img src={imageURL} alt={name} />
+        </div>
+    )
+}
 
 /**
  * Renders the product details section.

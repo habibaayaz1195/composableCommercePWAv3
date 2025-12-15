@@ -33,7 +33,7 @@ const AlgoliaHitsContent = (props) => {
                                 {hit.name}
                             </Text>
                             <Divider marginY={2} />
-                            {hit.body.length > 500 ? `${hit.body.substring(0, 500)}...` : hit.body}
+                            {hit?.body?.length > 500 ? `${hit.body.substring(0, 500)}...` : hit.body}
                         </Box>
                     </Collapse>
                 </Fragment>

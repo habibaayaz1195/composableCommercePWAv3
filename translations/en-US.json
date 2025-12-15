@@ -1262,7 +1262,7 @@
     "defaultMessage": "Please select your country."
   },
   "use_address_fields.error.please_select_your_state_or_province": {
-    "defaultMessage": "Please select your {stateOrProvince}."
+    "defaultMessage": "Please select your state or Province."
   },
   "use_address_fields.error.required": {
     "defaultMessage": "Required"

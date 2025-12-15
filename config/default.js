@@ -6,9 +6,9 @@
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const sites = require('./sites.js')
+
 const algoliaConfig = require('./algolia-config.json')
 const commerceAPIConfig = require('./commerce-api-config.json')
-
 module.exports = {
     app: {
         // Customize how your 'site' and 'locale' are displayed in the url.
@@ -28,8 +28,10 @@ module.exports = {
         // },
         // The sites for your app, which is imported from sites.js
         sites,
+        
         // Algolia search config
         algolia: algoliaConfig,
+
         // Commerce api config
         commerceAPI: {
             proxyPath: '/mobify/proxy/api',
@@ -73,7 +75,7 @@ module.exports = {
                 path: 'api'
             },
             {
-                host: 'zzgk-004.dx.commercecloud.salesforce.com',
+                host: 'zzkc-006.dx.commercecloud.salesforce.com',
                 path: 'ocapi'
             }
         ]

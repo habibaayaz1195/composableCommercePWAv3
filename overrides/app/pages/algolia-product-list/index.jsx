@@ -182,7 +182,8 @@ const ProductList = (props) => {
 
     // Reset scroll position when `isRefetching` becomes `true`.
     const query = searchQuery ?? ''
-    const filters = !isLoading && category?.id ? `categories.id:${category.id}` : ''
+    // const filters = !isLoading && category?.id ? `categories.id:${category.id}` : ''
+    const filters = ''
 
     return (
         <Box
@@ -228,7 +229,7 @@ const ProductList = (props) => {
                     )}
                     <TabPanels>
                         <TabPanel>
-                            <Configure query={query} filters={filters} />
+                            <Configure query={query} filters={filters} clickAnalytics />
                             <AlgoliaNoResultsBoundary
                                 fallback={
                                     <EmptySearchResults
